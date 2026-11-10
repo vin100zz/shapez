@@ -3,132 +3,214 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Usine détendue — trois propositions</title>
+<title>Trois concepts d'usine détendue</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Source+Sans+3:wght@400;600;700&display=swap">
 <style>
-:root{--ink:#3b3547;--muted:#7d748b;--line:#e4dccd;--bg:#f6f1e7;--card:#fffdf8;--accent:#c98a4b}
+:root{
+  /* Carnet d'atelier : une colonne de lecture, des planches pleine largeur, le verre cobalt comme accent */
+  --paper:#f3f2f6; --card:#ffffff; --ink:#26222f; --muted:#625c70; --line:#dedbe6; --accent:#3552b8;
+  --display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --body:"Source Sans 3","Segoe UI",system-ui,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--paper:#17151d;--card:#211e29;--ink:#ecebf3;--muted:#a7a2b5;--line:#363244;--accent:#93a6f2;color-scheme:dark}
+}
+:root[data-theme="dark"]{--paper:#17151d;--card:#211e29;--ink:#ecebf3;--muted:#a7a2b5;--line:#363244;--accent:#93a6f2;color-scheme:dark}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 ui-rounded,"SF Pro Rounded","Nunito","Segoe UI",system-ui,sans-serif}
-main{max-width:1120px;margin:0 auto;padding:40px 22px 80px}
-header h1{font-size:34px;line-height:1.15;margin:0 0 10px;letter-spacing:-.3px}
-header .lead{font-size:17px;color:var(--muted);max-width:760px;margin:0 0 16px}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chips span{background:#fff;border:1.5px solid var(--line);border-radius:999px;padding:4px 12px;font-size:13px}
-section{margin-top:46px}
-.concept{background:var(--card);border:1.5px solid var(--line);border-radius:20px;padding:22px 22px 26px;box-shadow:0 8px 30px rgba(59,53,71,.06)}
-.tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
-.concept h2{margin:0 0 4px;font-size:26px}
-.concept .sub{color:var(--muted);margin:0 0 14px}
-canvas.mock{width:100%;aspect-ratio:16/9;display:block;border-radius:14px;border:1.5px solid var(--line)}
-.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:18px}
-.cols h3{font-size:13px;text-transform:uppercase;letter-spacing:.8px;color:var(--accent);margin:12px 0 4px}
-.cols h3:first-child{margin-top:0}
-.cols p,.cols ul{margin:0;font-size:14px}
-.cols ul{padding-left:18px}
-.cta{display:inline-block;margin-top:16px;background:var(--ink);color:#fff;text-decoration:none;font-weight:700;padding:9px 16px;border-radius:11px}
-table{width:100%;border-collapse:collapse;background:var(--card);border:1.5px solid var(--line);border-radius:14px;overflow:hidden;font-size:14px}
-th,td{padding:9px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
-th{background:#f3ece0;font-size:13px}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 var(--body)}
+main{max-width:1120px;margin:0 auto;padding:44px 20px 80px;display:grid;gap:48px}
+h1,h2{font-family:var(--display);text-wrap:balance;margin:0}
+h1{font-size:clamp(30px,4.6vw,46px);line-height:1.08;font-weight:800;letter-spacing:-.5px}
+h2{font-size:28px;line-height:1.15;font-weight:800}
+h3{font-family:var(--body);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--accent);margin:0 0 4px}
+p{margin:0}
+a{color:var(--accent);font-weight:600}
+a:focus-visible,iframe:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.9px;text-transform:uppercase;color:var(--muted)}
+header{display:grid;gap:16px}
+.lead{font-size:19px;max-width:62ch;color:var(--ink)}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:6px 0 0;padding:0}
+.facts div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:grid;gap:4px;align-content:start}
+.facts dt{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--accent)}
+.facts dd{margin:0;font-size:15px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
+.chips li{border:1px solid var(--line);border-radius:999px;padding:3px 12px;font-size:14px;color:var(--muted)}
+.concept{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;display:grid;gap:16px}
+.concept .head{display:grid;gap:4px}
+.concept .sub{color:var(--muted);max-width:70ch}
+.tag{font-size:13px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--muted)}
+.tag b{color:var(--accent)}
+canvas.mock{width:100%;max-width:100%;aspect-ratio:16/9;display:block;border-radius:12px;border:1px solid var(--line)}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.cols>div{display:grid;gap:14px;align-content:start}
+.cols p,.cols ul{font-size:15px}
+.cols ul{margin:0;padding-left:18px}
+.play{display:grid;gap:14px}
+.play iframe{width:100%;aspect-ratio:16/10;min-height:440px;border:1px solid var(--line);border-radius:14px;background:#e9e1d2;display:block}
+.keys{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:14px;color:var(--muted);list-style:none;margin:0;padding:0}
+.keys b{color:var(--ink)}
+section{display:grid;gap:14px}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--card)}
+table{width:100%;border-collapse:collapse;font-size:15px;min-width:560px}
+th,td{padding:10px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+tr:last-child td{border-bottom:0}
+th{font-size:13px;text-transform:uppercase;letter-spacing:.6px;color:var(--muted)}
 td.s{letter-spacing:2px;color:var(--accent);white-space:nowrap}
-.reco{background:#3b3547;color:#f8f3ea;border-radius:20px;padding:24px 26px}
-.reco h2{margin:0 0 8px}
-.reco a{color:#f2c46d}
-.reco ul{margin:6px 0 0;padding-left:20px}
-@media (max-width:860px){.cols{grid-template-columns:1fr}header h1{font-size:27px}}
+td small{color:var(--muted)}
+.reco{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--accent);border-radius:14px;padding:22px 24px;display:grid;gap:10px}
+.reco ul,.reco ol{margin:0;padding-left:20px;display:grid;gap:4px}
+.note{font-size:14px;color:var(--muted)}
+@media (max-width:900px){.facts{grid-template-columns:repeat(2,1fr)}.cols{grid-template-columns:1fr}}
+@media (max-width:480px){.facts{grid-template-columns:1fr}.concept{padding:16px}.play iframe{min-height:520px;aspect-ratio:auto}}
 </style>
 </head>
 <body>
 <main>
 <header>
-  <h1>Un jeu d'usine détendu, « à la Shapez » : trois propositions</h1>
-  <p class="lead">Même plaisir de fond — extraire, acheminer, transformer, livrer, puis agrandir — mais chacune avec un thème, des règles et une direction artistique qui lui sont propres. Aucune ne reprend le nom, les formes, les niveaux ni le look de Shapez.</p>
-  <div class="chips"><span>Aucune défaite</span><span>Gisements infinis</span><span>Pas de chronomètre</span><span>Peu de machines, beaucoup de combinaisons</span><span>Une progression qui se voit</span><span>Pause et contemplation</span></div>
+  <div class="eyebrow">Étude de faisabilité et propositions</div>
+  <h1>Un jeu d'usine détendu, dans l'esprit de Shapez</h1>
+  <p class="lead">C'est faisable. La simulation est simple (une grille, aucun ennemi, aucun réseau) et reste à la portée d'un développeur seul. Le travail porte surtout sur le confort de construction et sur le rythme de la progression. Voici trois concepts avec leur propre identité, et une maquette jouable du concept recommandé.</p>
+  <dl class="facts">
+    <div><dt>Délais</dt><dd>Prototype jouable en 4 à 6 semaines, jeu complet en 12 à 18 mois pour une personne expérimentée.</dd></div>
+    <div><dt>Défi principal</dt><dd>L'ergonomie : tracer, copier-coller, annuler. C'est la moitié du ressenti.</dd></div>
+    <div><dt>Identité</dt><dd>On garde les principes du genre. On laisse le nom, les formes, les niveaux et le style de Shapez.</dd></div>
+    <div><dt>Recommandation</dt><dd>Rosace, l'atelier de vitrail, avec le carillon de C et le cycle jour/nuit de B.</dd></div>
+  </dl>
+  <ul class="chips" aria-label="Ce qui rend le jeu reposant">
+    <li>Aucune défaite</li><li>Gisements infinis</li><li>Pas de chronomètre</li><li>Peu de machines, beaucoup de combinaisons</li><li>Une progression qui se voit</li><li>Pause et contemplation</li>
+  </ul>
 </header>
 
-<section class="concept">
-  <div class="tag">Proposition A · recommandée</div>
-  <h2>Rosace — l'atelier de vitrail</h2>
-  <p class="sub">On produit des pièces de verre coloré pour illuminer, médaillon après médaillon, une immense rosace.</p>
-  <canvas class="mock" id="cA"></canvas>
+<article class="concept" id="rosace">
+  <div class="head">
+    <div class="tag">Proposition A · <b>recommandée</b></div>
+    <h2>Rosace, l'atelier de vitrail</h2>
+    <p class="sub">On produit des pièces de verre coloré pour illuminer une immense rosace, médaillon après médaillon.</p>
+  </div>
+  <canvas class="mock" id="cA" role="img" aria-label="Maquette de Rosace : lignes de convoyeurs portant des pièces de vitrail vers une rosace centrale"></canvas>
   <div class="cols">
     <div>
-      <h3>La pièce</h3><p>Un carré partagé par ses deux diagonales en <b>quatre triangles</b> teintés ou vides. Lisible au premier coup d'œil, riche en combinaisons.</p>
-      <h3>Boucle</h3><p>Extraire du sable coloré → découper, pivoter, sertir → livrer à la rosace → un médaillon s'allume et débloque une machine.</p>
+      <div><h3>La pièce</h3><p>Un carré partagé par ses deux diagonales en <b>quatre triangles</b>, chacun teinté ou vide. On la lit d'un coup d'œil et elle se combine de mille façons.</p></div>
+      <div><h3>Boucle</h3><p>Extraire du sable coloré, découper, pivoter, sertir, puis livrer à la rosace. Un médaillon s'allume et débloque une machine.</p></div>
     </div>
     <div>
-      <h3>Machines (MVP)</h3><ul><li>Extracteur, Convoyeur, Répartiteur</li><li>Découpeuse diagonale, Pivot</li><li>Sertisseuse, Recycleur</li><li>Plus tard : pont, givreuse (verre dépoli), graveuse</li></ul>
-      <h3>Règle signature</h3><p><b>Superposer = mélanger</b> : deux verres sertis l'un sur l'autre mélangent leurs teintes (rubis + cobalt = améthyste). Une seule règle remplace une machine de peinture.</p>
+      <div><h3>Machines du MVP</h3><ul><li>Extracteur, Convoyeur, Répartiteur</li><li>Découpeuse diagonale, Pivot</li><li>Sertisseuse, Recycleur</li><li>Plus tard : pont, givreuse (verre dépoli), graveuse</li></ul></div>
+      <div><h3>Règle signature</h3><p><b>Superposer, c'est mélanger.</b> Deux verres sertis l'un sur l'autre mélangent leurs teintes : rubis et cobalt donnent l'améthyste. Une seule règle remplace une machine de peinture.</p></div>
     </div>
     <div>
-      <h3>Forces</h3><ul><li>Le plus proche du plaisir recherché</li><li>Objectif final <i>visible</i> et magnifique (captures, bande-annonce)</li><li>Effort de développement maîtrisé</li></ul>
-      <h3>Risques</h3><ul><li>Rester visuellement distinct des concurrents → miser sur la lumière et la matière du verre</li></ul>
+      <div><h3>Forces</h3><ul><li>Le plus proche du plaisir recherché</li><li>Un objectif final visible et beau, idéal pour les captures et la bande-annonce</li><li>Un coût de développement maîtrisé</li></ul></div>
+      <div><h3>Risque</h3><ul><li>Rester visuellement distinct des concurrents. La parade : miser sur la lumière et la matière du verre.</li></ul></div>
     </div>
   </div>
-  <a class="cta" href="rosace-prototype.html">Ouvrir la maquette jouable →</a>
-</section>
+</article>
 
-<section class="concept">
-  <div class="tag">Proposition B</div>
-  <h2>Pépinière — l'usine qui pousse</h2>
-  <p class="sub">Des graines voyagent sur des convoyeurs en bois et poussent pendant le trajet ; on compose des bouquets pour le kiosque du village.</p>
-  <canvas class="mock" id="cB"></canvas>
+<article class="concept" id="pepiniere">
+  <div class="head">
+    <div class="tag">Proposition B</div>
+    <h2>Pépinière, l'usine qui pousse</h2>
+    <p class="sub">Des graines voyagent sur des convoyeurs en bois et poussent pendant le trajet. On compose des bouquets pour le kiosque du village.</p>
+  </div>
+  <canvas class="mock" id="cB" role="img" aria-label="Maquette de Pépinière : des pots avancent sur des convoyeurs en bois et les plantes grandissent jusqu'au kiosque"></canvas>
   <div class="cols">
     <div>
-      <h3>Boucle</h3><p>Semer → laisser pousser (sur le convoyeur, sous l'arrosoir, dans la serre) → greffer, rempoter → composer des bouquets → livrer au kiosque.</p>
-      <h3>Saisons</h3><p>Chaque saison change les espèces demandées et la vitesse de pousse ; l'hiver est une saison calme de réaménagement.</p>
+      <div><h3>Boucle</h3><p>Semer, laisser pousser (sur le convoyeur, sous l'arrosoir, dans la serre), greffer, rempoter, composer des bouquets, livrer au kiosque.</p></div>
+      <div><h3>Saisons</h3><p>Chaque saison change les espèces demandées et la vitesse de pousse. L'hiver est une saison calme, propice au réaménagement.</p></div>
     </div>
     <div>
-      <h3>Machines</h3><ul><li>Semoir, Convoyeur, Arrosoir, Serre</li><li>Greffoir (croise deux espèces)</li><li>Bouquetière, Compost</li></ul>
-      <h3>Règle signature</h3><p><b>Le temps devient de l'espace</b> : une plante mûrit pendant qu'elle avance. La longueur d'un convoyeur règle sa maturité.</p>
+      <div><h3>Machines</h3><ul><li>Semoir, Convoyeur, Arrosoir, Serre</li><li>Greffoir (croise deux espèces)</li><li>Bouquetière, Compost</li></ul></div>
+      <div><h3>Règle signature</h3><p><b>Le temps devient de l'espace.</b> Une plante mûrit pendant qu'elle avance. La longueur d'un convoyeur règle sa maturité.</p></div>
     </div>
     <div>
-      <h3>Forces</h3><ul><li>Très « cozy », public large</li><li>Mécanique originale et facile à expliquer</li></ul>
-      <h3>Risques</h3><ul><li>Lisibilité des stades de croissance à petite échelle</li><li>Réglages de durée délicats → risque de frustration</li><li>Plus d'illustrations (espèces, stades)</li></ul>
+      <div><h3>Forces</h3><ul><li>Très chaleureux, pour un large public</li><li>Une mécanique originale et facile à expliquer</li></ul></div>
+      <div><h3>Risques</h3><ul><li>Stades de croissance peu lisibles à petite échelle</li><li>Réglages de durée délicats, source possible de frustration</li><li>Beaucoup d'illustrations (espèces, stades)</li></ul></div>
     </div>
   </div>
-</section>
+</article>
 
-<section class="concept">
-  <div class="tag">Proposition C</div>
-  <h2>Carillon — l'usine qui compose</h2>
-  <p class="sub">On extrait des cristaux sonores, on les accorde et les harmonise ; chaque livraison au grand carillon joue sa note, en rythme.</p>
-  <canvas class="mock" id="cC"></canvas>
+<article class="concept" id="carillon">
+  <div class="head">
+    <div class="tag">Proposition C</div>
+    <h2>Carillon, l'usine qui compose</h2>
+    <p class="sub">On extrait des cristaux sonores, on les accorde et on les harmonise. Chaque livraison au grand carillon joue sa note, en rythme.</p>
+  </div>
+  <canvas class="mock" id="cC" role="img" aria-label="Maquette de Carillon : cristaux colorés sur des convoyeurs lumineux, harmoniseur et grand carillon, partition en haut de l'écran"></canvas>
   <div class="cols">
     <div>
-      <h3>Boucle</h3><p>Extraire des notes → accorder (transposer) → harmoniser en accords → séquencer en phrases → livrer au carillon, qui joue la partition.</p>
-      <h3>Ambiance</h3><p>Nocturne, lumineuse. La musique de fond <i>est</i> l'usine : plus elle grandit, plus la bande-son s'enrichit.</p>
+      <div><h3>Boucle</h3><p>Extraire des notes, les accorder (transposer), les harmoniser en accords, les séquencer en phrases, puis les livrer au carillon qui joue la partition.</p></div>
+      <div><h3>Ambiance</h3><p>Nocturne et lumineuse. La musique de fond, c'est l'usine elle-même : plus elle grandit, plus la bande-son s'enrichit.</p></div>
     </div>
     <div>
-      <h3>Machines</h3><ul><li>Résonateur, Convoyeur, Métronome</li><li>Accordeur (+1 degré), Octavieur</li><li>Harmoniseur, Séquenceur</li></ul>
-      <h3>Règle signature</h3><p><b>Le débit devient rythme</b> : la cadence des convoyeurs, calée sur le tempo, est audible. Une usine équilibrée sonne juste.</p>
+      <div><h3>Machines</h3><ul><li>Résonateur, Convoyeur, Métronome</li><li>Accordeur (+1 degré), Octavieur</li><li>Harmoniseur, Séquenceur</li></ul></div>
+      <div><h3>Règle signature</h3><p><b>Le débit devient rythme.</b> La cadence des convoyeurs suit le tempo et s'entend. Une usine équilibrée sonne juste.</p></div>
     </div>
     <div>
-      <h3>Forces</h3><ul><li>Le plus original, très mémorable</li><li>Fort potentiel en vidéo et en streaming</li></ul>
-      <h3>Risques</h3><ul><li>Design plus difficile (théorie musicale à vulgariser)</li><li>Accessibilité : tout doit rester jouable sans le son</li><li>Production audio exigeante</li></ul>
+      <div><h3>Forces</h3><ul><li>Le plus original et le plus mémorable</li><li>Fort potentiel en vidéo et en streaming</li></ul></div>
+      <div><h3>Risques</h3><ul><li>Design plus difficile (théorie musicale à vulgariser)</li><li>Accessibilité : tout doit rester jouable sans le son</li><li>Production audio exigeante</li></ul></div>
     </div>
   </div>
+</article>
+
+<section class="play" id="maquette">
+  <div class="eyebrow">Maquette jouable · concept A</div>
+  <h2>Essayer Rosace</h2>
+  <p class="lead" style="font-size:17px">L'usine de démonstration sertit déjà le troisième médaillon. Le quatrième demande de superposer du rubis et du cobalt, et le cinquième est à construire vous-même. Cliquez dans la maquette pour utiliser le clavier.</p>
+  <iframe src="rosace-prototype.html" title="Maquette jouable de Rosace"></iframe>
+  <ul class="keys">
+    <li><b>Clic</b> construire</li><li><b>Glisser</b> tracer un convoyeur</li><li><b>R</b> pivoter</li><li><b>Clic droit</b> effacer</li><li><b>Molette</b> zoom</li><li><b>1 à 7</b> outils</li><li><b>H</b> contemplation</li><li><b>P</b> pause</li>
+  </ul>
+  <p class="note">La maquette ne s'affiche pas ? <a href="rosace-prototype.html">Ouvrez-la en pleine page</a>. Carte bornée, sans sauvegarde ni annulation, toutes les machines débloquées d'emblée.</p>
 </section>
 
-<section>
+<section id="comparatif">
   <h2>Comparatif</h2>
+  <div class="tablewrap">
   <table>
     <tr><th>Critère</th><th>A · Rosace</th><th>B · Pépinière</th><th>C · Carillon</th></tr>
-    <tr><td>Proximité avec le plaisir « à la Shapez »</td><td class="s">●●●●●</td><td class="s">●●●○○</td><td class="s">●●○○○</td></tr>
-    <tr><td>Originalité</td><td class="s">●●●●○</td><td class="s">●●●●○</td><td class="s">●●●●●</td></tr>
-    <tr><td>Lisibilité à grande échelle</td><td class="s">●●●●●</td><td class="s">●●●○○</td><td class="s">●●●○○</td></tr>
-    <tr><td>Potentiel visuel (captures, bande-annonce)</td><td class="s">●●●●●</td><td class="s">●●●●○</td><td class="s">●●●○○</td></tr>
-    <tr><td>Coût de production</td><td>Modéré</td><td>Modéré +<br><small>beaucoup d'illustrations</small></td><td>Élevé<br><small>audio + design</small></td></tr>
+    <tr><td>Proximité avec le plaisir de Shapez</td><td class="s" title="5 sur 5">●●●●●</td><td class="s" title="3 sur 5">●●●○○</td><td class="s" title="2 sur 5">●●○○○</td></tr>
+    <tr><td>Originalité</td><td class="s" title="4 sur 5">●●●●○</td><td class="s" title="4 sur 5">●●●●○</td><td class="s" title="5 sur 5">●●●●●</td></tr>
+    <tr><td>Lisibilité à grande échelle</td><td class="s" title="5 sur 5">●●●●●</td><td class="s" title="3 sur 5">●●●○○</td><td class="s" title="3 sur 5">●●●○○</td></tr>
+    <tr><td>Potentiel visuel (captures, bande-annonce)</td><td class="s" title="5 sur 5">●●●●●</td><td class="s" title="4 sur 5">●●●●○</td><td class="s" title="3 sur 5">●●●○○</td></tr>
+    <tr><td>Coût de production</td><td>Modéré</td><td>Modéré<br><small>plus beaucoup d'illustrations</small></td><td>Élevé<br><small>audio et design</small></td></tr>
     <tr><td>Risque de design</td><td>Faible</td><td>Moyen</td><td>Élevé</td></tr>
   </table>
+  </div>
 </section>
 
-<section class="reco">
+<section class="reco" id="recommandation">
   <h2>Recommandation</h2>
   <p>Partir sur <b>A · Rosace</b>, en empruntant le meilleur des deux autres :</p>
   <ul>
-    <li>de <b>C</b> : chaque livraison joue une note d'une gamme pentatonique (jamais dissonante) — l'usine devient une boîte à musique ;</li>
-    <li>de <b>B</b> : un cycle jour/nuit doux qui change la lumière traversant la rosace, sans aucun effet sur la difficulté.</li>
+    <li>de <b>C</b>, chaque livraison joue une note d'une gamme pentatonique, donc jamais dissonante (déjà dans la maquette, bouton Son) ;</li>
+    <li>de <b>B</b>, un cycle jour/nuit purement décoratif qui change la lumière traversant la rosace.</li>
   </ul>
-  <p>La maquette jouable valide déjà la boucle principale : <a href="rosace-prototype.html">rosace-prototype.html</a>.</p>
+</section>
+
+<section id="feuille-de-route">
+  <h2>Feuille de route indicative</h2>
+  <div class="tablewrap">
+  <table>
+    <tr><th>Phase</th><th>Durée</th><th>Contenu</th><th>Critère de sortie</th></tr>
+    <tr><td>Maquette</td><td>Faite</td><td>Boucle de jeu, 6 machines, 19 commandes</td><td>Le concept se comprend en 2 minutes</td></tr>
+    <tr><td>Prototype vertical</td><td>4 à 6 semaines</td><td>Simulation par chemins de convoyeurs, carte infinie, sauvegarde, annulation, déblocages</td><td>5 à 10 testeurs jouent 1 h sans aide</td></tr>
+    <tr><td>Alpha</td><td>2 à 3 mois</td><td>Ponts, plans réutilisables, premier chapitre complet, audio, accessibilité</td><td>3 à 4 h fluides, 60 images/s avec une grande usine</td></tr>
+    <tr><td>Démo publique</td><td>Environ 1 mois</td><td>Démo web, page Steam, captures, bande-annonce</td><td>Listes de souhaits et retours</td></tr>
+    <tr><td>Version 1.0</td><td>6 à 9 mois</td><td>3 ou 4 verrières, bac à sable, défis, finitions, traductions</td><td>Sortie</td></tr>
+  </table>
+  </div>
+  <p class="note">Estimations pour un développeur expérimenté à temps plein, à recalibrer après le prototype.</p>
+</section>
+
+<section class="reco" id="decisions">
+  <h2>Décisions à prendre</h2>
+  <ol>
+    <li><b>Plateformes :</b> web et Steam (TypeScript), ou mobile et consoles (Godot).</li>
+    <li><b>Ambition :</b> un petit jeu soigné en 3 à 6 mois, ou un jeu complet en 12 à 18 mois.</li>
+    <li><b>Concept :</b> Rosace seul, ou un hybride (par exemple Rosace avec un chapitre Pépinière).</li>
+    <li><b>Graphismes et son :</b> générés par le code comme dans la maquette, ou confiés à un illustrateur et un compositeur.</li>
+  </ol>
 </section>
 </main>
 
