@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Usine détendue — trois propositions</title>
+<style>
+:root{--ink:#3b3547;--muted:#7d748b;--line:#e4dccd;--bg:#f6f1e7;--card:#fffdf8;--accent:#c98a4b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 ui-rounded,"SF Pro Rounded","Nunito","Segoe UI",system-ui,sans-serif}
+main{max-width:1120px;margin:0 auto;padding:40px 22px 80px}
+header h1{font-size:34px;line-height:1.15;margin:0 0 10px;letter-spacing:-.3px}
+header .lead{font-size:17px;color:var(--muted);max-width:760px;margin:0 0 16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{background:#fff;border:1.5px solid var(--line);border-radius:999px;padding:4px 12px;font-size:13px}
+section{margin-top:46px}
+.concept{background:var(--card);border:1.5px solid var(--line);border-radius:20px;padding:22px 22px 26px;box-shadow:0 8px 30px rgba(59,53,71,.06)}
+.tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+.concept h2{margin:0 0 4px;font-size:26px}
+.concept .sub{color:var(--muted);margin:0 0 14px}
+canvas.mock{width:100%;aspect-ratio:16/9;display:block;border-radius:14px;border:1.5px solid var(--line)}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:18px}
+.cols h3{font-size:13px;text-transform:uppercase;letter-spacing:.8px;color:var(--accent);margin:12px 0 4px}
+.cols h3:first-child{margin-top:0}
+.cols p,.cols ul{margin:0;font-size:14px}
+.cols ul{padding-left:18px}
+.cta{display:inline-block;margin-top:16px;background:var(--ink);color:#fff;text-decoration:none;font-weight:700;padding:9px 16px;border-radius:11px}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1.5px solid var(--line);border-radius:14px;overflow:hidden;font-size:14px}
+th,td{padding:9px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:#f3ece0;font-size:13px}
+td.s{letter-spacing:2px;color:var(--accent);white-space:nowrap}
+.reco{background:#3b3547;color:#f8f3ea;border-radius:20px;padding:24px 26px}
+.reco h2{margin:0 0 8px}
+.reco a{color:#f2c46d}
+.reco ul{margin:6px 0 0;padding-left:20px}
+@media (max-width:860px){.cols{grid-template-columns:1fr}header h1{font-size:27px}}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <h1>Un jeu d'usine détendu, « à la Shapez » : trois propositions</h1>
+  <p class="lead">Même plaisir de fond — extraire, acheminer, transformer, livrer, puis agrandir — mais chacune avec un thème, des règles et une direction artistique qui lui sont propres. Aucune ne reprend le nom, les formes, les niveaux ni le look de Shapez.</p>
+  <div class="chips"><span>Aucune défaite</span><span>Gisements infinis</span><span>Pas de chronomètre</span><span>Peu de machines, beaucoup de combinaisons</span><span>Une progression qui se voit</span><span>Pause et contemplation</span></div>
+</header>
+
+<section class="concept">
+  <div class="tag">Proposition A · recommandée</div>
+  <h2>Rosace — l'atelier de vitrail</h2>
+  <p class="sub">On produit des pièces de verre coloré pour illuminer, médaillon après médaillon, une immense rosace.</p>
+  <canvas class="mock" id="cA"></canvas>
+  <div class="cols">
+    <div>
+      <h3>La pièce</h3><p>Un carré partagé par ses deux diagonales en <b>quatre triangles</b> teintés ou vides. Lisible au premier coup d'œil, riche en combinaisons.</p>
+      <h3>Boucle</h3><p>Extraire du sable coloré → découper, pivoter, sertir → livrer à la rosace → un médaillon s'allume et débloque une machine.</p>
+    </div>
+    <div>
+      <h3>Machines (MVP)</h3><ul><li>Extracteur, Convoyeur, Répartiteur</li><li>Découpeuse diagonale, Pivot</li><li>Sertisseuse, Recycleur</li><li>Plus tard : pont, givreuse (verre dépoli), graveuse</li></ul>
+      <h3>Règle signature</h3><p><b>Superposer = mélanger</b> : deux verres sertis l'un sur l'autre mélangent leurs teintes (rubis + cobalt = améthyste). Une seule règle remplace une machine de peinture.</p>
+    </div>
+    <div>
+      <h3>Forces</h3><ul><li>Le plus proche du plaisir recherché</li><li>Objectif final <i>visible</i> et magnifique (captures, bande-annonce)</li><li>Effort de développement maîtrisé</li></ul>
+      <h3>Risques</h3><ul><li>Rester visuellement distinct des concurrents → miser sur la lumière et la matière du verre</li></ul>
+    </div>
+  </div>
+  <a class="cta" href="rosace-prototype.html">Ouvrir la maquette jouable →</a>
+</section>
+
+<section class="concept">
+  <div class="tag">Proposition B</div>
+  <h2>Pépinière — l'usine qui pousse</h2>
+  <p class="sub">Des graines voyagent sur des convoyeurs en bois et poussent pendant le trajet ; on compose des bouquets pour le kiosque du village.</p>
+  <canvas class="mock" id="cB"></canvas>
+  <div class="cols">
+    <div>
+      <h3>Boucle</h3><p>Semer → laisser pousser (sur le convoyeur, sous l'arrosoir, dans la serre) → greffer, rempoter → composer des bouquets → livrer au kiosque.</p>
+      <h3>Saisons</h3><p>Chaque saison change les espèces demandées et la vitesse de pousse ; l'hiver est une saison calme de réaménagement.</p>
+    </div>
+    <div>
+      <h3>Machines</h3><ul><li>Semoir, Convoyeur, Arrosoir, Serre</li><li>Greffoir (croise deux espèces)</li><li>Bouquetière, Compost</li></ul>
+      <h3>Règle signature</h3><p><b>Le temps devient de l'espace</b> : une plante mûrit pendant qu'elle avance. La longueur d'un convoyeur règle sa maturité.</p>
+    </div>
+    <div>
+      <h3>Forces</h3><ul><li>Très « cozy », public large</li><li>Mécanique originale et facile à expliquer</li></ul>
+      <h3>Risques</h3><ul><li>Lisibilité des stades de croissance à petite échelle</li><li>Réglages de durée délicats → risque de frustration</li><li>Plus d'illustrations (espèces, stades)</li></ul>
+    </div>
+  </div>
+</section>
+
+<section class="concept">
+  <div class="tag">Proposition C</div>
+  <h2>Carillon — l'usine qui compose</h2>
+  <p class="sub">On extrait des cristaux sonores, on les accorde et les harmonise ; chaque livraison au grand carillon joue sa note, en rythme.</p>
+  <canvas class="mock" id="cC"></canvas>
+  <div class="cols">
+    <div>
+      <h3>Boucle</h3><p>Extraire des notes → accorder (transposer) → harmoniser en accords → séquencer en phrases → livrer au carillon, qui joue la partition.</p>
+      <h3>Ambiance</h3><p>Nocturne, lumineuse. La musique de fond <i>est</i> l'usine : plus elle grandit, plus la bande-son s'enrichit.</p>
+    </div>
+    <div>
+      <h3>Machines</h3><ul><li>Résonateur, Convoyeur, Métronome</li><li>Accordeur (+1 degré), Octavieur</li><li>Harmoniseur, Séquenceur</li></ul>
+      <h3>Règle signature</h3><p><b>Le débit devient rythme</b> : la cadence des convoyeurs, calée sur le tempo, est audible. Une usine équilibrée sonne juste.</p>
+    </div>
+    <div>
+      <h3>Forces</h3><ul><li>Le plus original, très mémorable</li><li>Fort potentiel en vidéo et en streaming</li></ul>
+      <h3>Risques</h3><ul><li>Design plus difficile (théorie musicale à vulgariser)</li><li>Accessibilité : tout doit rester jouable sans le son</li><li>Production audio exigeante</li></ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Comparatif</h2>
+  <table>
+    <tr><th>Critère</th><th>A · Rosace</th><th>B · Pépinière</th><th>C · Carillon</th></tr>
+    <tr><td>Proximité avec le plaisir « à la Shapez »</td><td class="s">●●●●●</td><td class="s">●●●○○</td><td class="s">●●○○○</td></tr>
+    <tr><td>Originalité</td><td class="s">●●●●○</td><td class="s">●●●●○</td><td class="s">●●●●●</td></tr>
+    <tr><td>Lisibilité à grande échelle</td><td class="s">●●●●●</td><td class="s">●●●○○</td><td class="s">●●●○○</td></tr>
+    <tr><td>Potentiel visuel (captures, bande-annonce)</td><td class="s">●●●●●</td><td class="s">●●●●○</td><td class="s">●●●○○</td></tr>
+    <tr><td>Coût de production</td><td>Modéré</td><td>Modéré +<br><small>beaucoup d'illustrations</small></td><td>Élevé<br><small>audio + design</small></td></tr>
+    <tr><td>Risque de design</td><td>Faible</td><td>Moyen</td><td>Élevé</td></tr>
+  </table>
+</section>
+
+<section class="reco">
+  <h2>Recommandation</h2>
+  <p>Partir sur <b>A · Rosace</b>, en empruntant le meilleur des deux autres :</p>
+  <ul>
+    <li>de <b>C</b> : chaque livraison joue une note d'une gamme pentatonique (jamais dissonante) — l'usine devient une boîte à musique ;</li>
+    <li>de <b>B</b> : un cycle jour/nuit doux qui change la lumière traversant la rosace, sans aucun effet sur la difficulté.</li>
+  </ul>
+  <p>La maquette jouable valide déjà la boucle principale : <a href="rosace-prototype.html">rosace-prototype.html</a>.</p>
+</section>
+</main>
+
+<script>
+'use strict';
+const T=40, CW=1200, CH=675;
+const INK='#3b3547', ACC='#c98a4b';
+const COL={r:'#e0566b',y:'#f4b942',b:'#3f72d9',o:'#f08a3c',g:'#38a878',v:'#8d5bd1',k:'#6b7280'};
+function setup(id){ const cv=document.getElementById(id); cv.width=CW*2; cv.height=CH*2; const c=cv.getContext('2d'); c.scale(2,2); return c; }
+function rr(c,x,y,w,h,r){ c.beginPath(); c.moveTo(x+r,y); c.arcTo(x+w,y,x+w,y+h,r); c.arcTo(x+w,y+h,x,y+h,r); c.arcTo(x,y+h,x,y,r); c.arcTo(x,y,x+w,y,r); c.closePath(); }
+const P=v=>v*T+T/2;
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+function grid(c,col){ c.strokeStyle=col; c.lineWidth=1; c.beginPath(); for(let x=0;x<=CW;x+=T){c.moveTo(x,0);c.lineTo(x,CH);} for(let y=0;y<=CH;y+=T){c.moveTo(0,y);c.lineTo(CW,y);} c.stroke(); }
+function blobs(c,cells,col,a,rad=0.75){ c.save(); c.globalAlpha=a; c.filter='blur(6px)'; c.fillStyle=col; for(const [x,y] of cells){ c.beginPath(); c.arc(P(x),P(y),T*rad,0,7); c.fill(); } c.restore(); }
+function arrowHead(c,x,y,ang,sz){ c.beginPath(); c.moveTo(x+Math.cos(ang)*sz,y+Math.sin(ang)*sz); c.lineTo(x+Math.cos(ang+2.4)*sz,y+Math.sin(ang+2.4)*sz); c.lineTo(x+Math.cos(ang-2.4)*sz,y+Math.sin(ang-2.4)*sz); c.closePath(); c.fill(); }
+// Chemin orthogonal (en cases) -> tracé arrondi + échantillonnage
+function pathPx(pts){ return pts.map(([x,y])=>[P(x),P(y)]); }
+function strokePath(c,pp){ c.beginPath(); c.moveTo(pp[0][0],pp[0][1]); for(let i=1;i<pp.length-1;i++) c.arcTo(pp[i][0],pp[i][1],pp[i+1][0],pp[i+1][1],T/2); c.lineTo(pp[pp.length-1][0],pp[pp.length-1][1]); }
+function extendEnds(pp){ // prolonge le tracé d'une demi-case à chaque extrémité
+  const u=(p,q)=>{const d=Math.hypot(q[0]-p[0],q[1]-p[1])||1; return [(p[0]-q[0])/d,(p[1]-q[1])/d];};
+  const a=pp[0], z=pp[pp.length-1], ua=u(a,pp[1]), uz=u(z,pp[pp.length-2]);
+  return [[a[0]+ua[0]*T/2,a[1]+ua[1]*T/2],...pp.slice(1,-1),[z[0]+uz[0]*T/2,z[1]+uz[1]*T/2]];
+}
+function sample(pp,step,off=0){ // points équidistants le long d'une polyligne
+  const segs=[]; let total=0;
+  for(let i=0;i<pp.length-1;i++){ const L=Math.hypot(pp[i+1][0]-pp[i][0],pp[i+1][1]-pp[i][1]); segs.push([total,L,i]); total+=L; }
+  const out=[];
+  for(let d=off;d<=total;d+=step){
+    const [t0,L,i]=segs.find(([t0,L])=>d>=t0&&d<=t0+L)||segs[segs.length-1];
+    const f=L?(d-t0)/L:0, [x0,y0]=pp[i], [x1,y1]=pp[i+1];
+    out.push({x:x0+(x1-x0)*f,y:y0+(y1-y0)*f,a:Math.atan2(y1-y0,x1-x0)});
+  }
+  return out;
+}
+function track(c,pts,st){
+  let pp=extendEnds(pathPx(pts));
+  c.save(); c.lineCap='butt'; c.lineJoin='round';
+  if(st.glow){ c.shadowColor=st.glow; c.shadowBlur=14; }
+  strokePath(c,pp); c.strokeStyle=st.outer; c.lineWidth=T*0.72; c.stroke(); c.shadowBlur=0;
+  strokePath(c,pp); c.strokeStyle=st.inner; c.lineWidth=T*0.54; c.stroke();
+  c.strokeStyle=st.chev; c.lineWidth=T*0.065; c.lineCap='round';
+  for(const s of sample(pp,T/2,T/4)){ const ux=Math.cos(s.a),uy=Math.sin(s.a),nx=-uy,ny=ux,a=T*0.07,w=T*0.13;
+    c.beginPath(); c.moveTo(s.x-ux*a+nx*w,s.y-uy*a+ny*w); c.lineTo(s.x+ux*a,s.y+uy*a); c.lineTo(s.x-ux*a-nx*w,s.y-uy*a-ny*w); c.stroke(); }
+  c.restore();
+  return pp;
+}
+function along(pp,step,off,fn,skip=[]){ sample(pp,step,off).forEach((s,i)=>{ if(!skip.includes(i)) fn(s.x,s.y,i); }); }
+function panel(c,x,y,w,h,st){ c.save(); c.shadowColor=st.shadow||'rgba(59,53,71,.13)'; c.shadowBlur=18; c.shadowOffsetY=4; rr(c,x,y,w,h,14); c.fillStyle=st.panel; c.fill(); c.restore(); rr(c,x,y,w,h,14); c.lineWidth=1.5; c.strokeStyle=st.line; c.stroke(); }
+function text(c,s,x,y,font,col,align='left'){ c.font=font; c.fillStyle=col; c.textAlign=align; c.textBaseline='alphabetic'; c.fillText(s,x,y); }
+function bar(c,x,y,w,f,st){ rr(c,x,y,w,8,4); c.fillStyle=st.barBg; c.fill(); if(f>0){ rr(c,x,y,w*f,8,4); c.fillStyle=st.bar; c.fill(); } }
+function toolbar(c,st,tools,sel){
+  const n=tools.length, w=n*66+12, x=(CW-w)/2, y=CH-88;
+  panel(c,x,y,w,76,st);
+  tools.forEach((t,i)=>{ const tx=x+6+i*66;
+    if(i===sel){ rr(c,tx+1,y+5,64,66,10); c.fillStyle=st.sel; c.fill(); c.strokeStyle=st.selLine; c.lineWidth=1.5; c.stroke(); }
+    c.save(); c.translate(tx+33,y+30); t.icon(c); c.restore();
+    text(c,t.name,tx+33,y+64,'600 10.5px system-ui,sans-serif',st.text,'center');
+    text(c,String(i+1),tx+8,y+16,'9.5px system-ui,sans-serif',st.muted,'left');
+  });
+}
+function callout(c,x1,y1,x2,y2,lines,st){
+  c.save(); c.setLineDash([5,5]); c.strokeStyle=st.note; c.lineWidth=1.8; c.beginPath(); c.moveTo(x1,y1); c.lineTo(x2,y2); c.stroke(); c.setLineDash([]);
+  c.fillStyle=st.note; c.beginPath(); c.arc(x1,y1,4,0,7); c.fill();
+  c.font='italic 600 13px system-ui,sans-serif'; const w=Math.max(...lines.map(l=>c.measureText(l).width))+20, h=lines.length*18+12;
+  const bx=x2-(x2<x1?w:0), by=y2-h/2;
+  rr(c,bx,by,w,h,9); c.fillStyle=st.noteBg; c.fill(); c.strokeStyle=st.note; c.lineWidth=1.5; c.stroke();
+  lines.forEach((l,i)=>text(c,l,bx+10,by+22+i*18,'italic 600 13px system-ui,sans-serif',st.noteText));
+  c.restore();
+}
+
+/* ============ A · Rosace ============ */
+function drawGlass(c,k,x,y,s){
+  const h=s/2, Q=[[x-h,y-h],[x+h,y-h],[x+h,y+h],[x-h,y+h]], lw=Math.max(.8,s*.08); c.lineJoin='round';
+  for(let i=0;i<4;i++){ const a=Q[i],b=Q[(i+1)%4]; c.beginPath(); c.moveTo(a[0],a[1]); c.lineTo(b[0],b[1]); c.lineTo(x,y); c.closePath();
+    if(k[i]==='-'){ c.strokeStyle='rgba(59,53,71,.22)'; c.lineWidth=lw*.5; c.stroke(); continue; } c.fillStyle=COL[k[i]]; c.fill(); }
+  for(let i=0;i<4;i++){ if(k[i]==='-') continue; const a=Q[i],b=Q[(i+1)%4];
+    const ax=a[0]+(x-a[0])*.24, ay=a[1]+(y-a[1])*.24, bx=b[0]+(x-b[0])*.24, by=b[1]+(y-b[1])*.24;
+    c.beginPath(); c.moveTo(ax+(bx-ax)*.2,ay+(by-ay)*.2); c.lineTo(ax+(bx-ax)*.55,ay+(by-ay)*.55); c.strokeStyle='rgba(255,255,255,.55)'; c.lineWidth=lw*.7; c.lineCap='round'; c.stroke();
+    c.beginPath(); c.moveTo(a[0],a[1]); c.lineTo(b[0],b[1]); c.lineTo(x,y); c.closePath(); c.strokeStyle=INK; c.lineWidth=lw; c.stroke(); }
+}
+const BODY={extractor:'#fff3dc',cutter:'#fdecef',rotator:'#eaf1fd',assembler:'#e8f7ee',splitter:'#f1ecfb',trash:'#ebe8ef'};
+const PORTS={extractor:{i:[],o:[0]},cutter:{i:[2],o:[1,3]},rotator:{i:[2],o:[0]},assembler:{i:[1,3],o:[0]},splitter:{i:[2],o:[0,1,3]},trash:{i:[0,1,2,3],o:[]}};
+const LV=[[0,-1],[1,0],[0,1],[-1,0]];
+function machineA(c,type,s,dep){
+  const h=s/2,m=s*.08; rr(c,-h+m,-h+m,s-2*m,s-2*m,s*.18); c.fillStyle=BODY[type]; c.fill(); c.lineWidth=s*.05; c.strokeStyle=INK; c.stroke();
+  const Pp=PORTS[type];
+  for(const l of Pp.i){ const [vx,vy]=LV[l]; c.fillStyle='#a79fb6'; const len=s*.28,th=s*.07; if(vx===0) c.fillRect(-len/2,vy*(h-m)-th/2,len,th); else c.fillRect(vx*(h-m)-th/2,-len/2,th,len); }
+  for(const l of Pp.o){ const [vx,vy]=LV[l],nx=-vy,ny=vx,bc=h-m-s*.05,tip=h-s*.005,w=s*.13; c.beginPath(); c.moveTo(vx*bc+nx*w,vy*bc+ny*w); c.lineTo(vx*tip,vy*tip); c.lineTo(vx*bc-nx*w,vy*bc-ny*w); c.closePath(); c.fillStyle=ACC; c.fill(); }
+  c.lineCap='round';
+  if(type==='extractor'){ c.beginPath(); c.arc(0,0,s*.25,0,7); c.fillStyle=COL[dep]; c.fill(); c.lineWidth=s*.045; c.strokeStyle=INK; c.stroke(); c.strokeStyle='rgba(255,255,255,.85)'; c.lineWidth=s*.05; for(let i=0;i<3;i++){const a=.5+i*2.094; c.beginPath(); c.moveTo(Math.cos(a)*s*.05,Math.sin(a)*s*.05); c.lineTo(Math.cos(a)*s*.19,Math.sin(a)*s*.19); c.stroke();} }
+  if(type==='cutter'){ c.beginPath(); c.moveTo(-h+m,-h+m); c.lineTo(h-m,-h+m); c.lineTo(h-m,h-m); c.closePath(); c.fillStyle='rgba(201,138,75,.13)'; c.fill(); c.beginPath(); c.moveTo(-h+m*2.3,-h+m*2.3); c.lineTo(h-m*2.3,h-m*2.3); c.strokeStyle=ACC; c.lineWidth=s*.085; c.stroke(); c.beginPath(); c.arc(0,0,s*.07,0,7); c.fillStyle=INK; c.fill(); }
+  if(type==='rotator'){ c.beginPath(); c.arc(0,0,s*.2,-2.6,1.9); c.strokeStyle=INK; c.lineWidth=s*.07; c.stroke(); c.fillStyle=INK; arrowHead(c,Math.cos(1.9)*s*.2,Math.sin(1.9)*s*.2,1.9+Math.PI/2,s*.11); }
+  if(type==='assembler'){ c.strokeStyle=INK; c.lineWidth=s*.04; c.fillStyle='#38a878'; c.beginPath(); c.moveTo(-s*.3,-s*.17); c.lineTo(-s*.04,0); c.lineTo(-s*.3,s*.17); c.closePath(); c.fill(); c.stroke(); c.fillStyle='#f4b942'; c.beginPath(); c.moveTo(s*.3,-s*.17); c.lineTo(s*.04,0); c.lineTo(s*.3,s*.17); c.closePath(); c.fill(); c.stroke(); c.fillStyle=INK; arrowHead(c,0,-s*.2,-Math.PI/2,s*.08); }
+  if(type==='splitter'){ c.strokeStyle=INK; c.lineWidth=s*.06; c.beginPath(); c.moveTo(0,s*.26); c.lineTo(0,-s*.14); c.moveTo(0,0); c.lineTo(-s*.18,0); c.moveTo(0,0); c.lineTo(s*.18,0); c.stroke(); c.fillStyle=INK; arrowHead(c,0,-s*.2,-Math.PI/2,s*.08); arrowHead(c,-s*.22,0,Math.PI,s*.08); arrowHead(c,s*.22,0,0,s*.08); }
+  if(type==='trash'){ c.beginPath(); c.arc(0,0,s*.24,0,7); c.fillStyle='#5b5468'; c.fill(); c.strokeStyle='rgba(255,255,255,.75)'; c.lineWidth=s*.045; c.beginPath(); c.arc(0,0,s*.13,0,4.2); c.stroke(); }
+}
+function mA(c,type,x,y,rot,dep){ c.save(); c.translate(P(x),P(y)); c.rotate(rot*Math.PI/2); machineA(c,type,T,dep); c.restore(); }
+function rosace(c,cx,cy,R,meds,lit,cur){
+  c.save(); c.translate(cx,cy);
+  c.beginPath(); c.arc(0,0,R,0,7); c.fillStyle='#2f2a3b'; c.fill(); c.lineWidth=R*.07; c.strokeStyle='#d8ccb6'; c.stroke();
+  c.lineWidth=R*.018; c.strokeStyle=INK; c.beginPath(); c.arc(0,0,R*1.035,0,7); c.stroke();
+  c.strokeStyle='#4d4660'; c.lineWidth=R*.03; for(let i=0;i<12;i++){ const a=-Math.PI/2+i*Math.PI/6; c.beginPath(); c.moveTo(Math.cos(a)*R*.22,Math.sin(a)*R*.22); c.lineTo(Math.cos(a)*R*.97,Math.sin(a)*R*.97); c.stroke(); }
+  c.beginPath(); c.arc(0,0,R*.7,0,7); c.stroke();
+  meds.forEach((k,i)=>{
+    let g; if(i<6){const a=-Math.PI/2+i*Math.PI/3; g={x:Math.cos(a)*R*.5,y:Math.sin(a)*R*.5,r:R*.2};} else if(i===6) g={x:0,y:0,r:R*.22}; else {const a=-Math.PI/2+(i-7+.5)*Math.PI/6; g={x:Math.cos(a)*R*.84,y:Math.sin(a)*R*.84,r:R*.115};}
+    const f=lit[i]||0;
+    c.save(); c.beginPath(); c.arc(g.x,g.y,g.r,0,7); c.fillStyle=f>=1?'#fbf2df':'#3c3650'; c.fill(); c.clip();
+    c.globalAlpha=.3; drawGlass(c,k,g.x,g.y,g.r*1.5); c.globalAlpha=1;
+    if(f>0){ c.beginPath(); c.moveTo(g.x,g.y); c.arc(g.x,g.y,g.r*1.3,-Math.PI/2,-Math.PI/2+f*Math.PI*2); c.closePath(); c.clip(); c.fillStyle='#fbf2df'; c.fillRect(g.x-g.r,g.y-g.r,2*g.r,2*g.r); drawGlass(c,k,g.x,g.y,g.r*1.5); }
+    c.restore(); c.beginPath(); c.arc(g.x,g.y,g.r,0,7); c.lineWidth=Math.max(1,g.r*.13); c.strokeStyle=i===cur?'#f2c46d':'#1f1b28'; c.stroke();
+    if(i===cur){ c.globalAlpha=.5; c.beginPath(); c.arc(g.x,g.y,g.r*1.22,0,7); c.stroke(); c.globalAlpha=1; }
+  });
+  c.restore();
+}
+function sceneA(){
+  const c=setup('cA'), st={outer:'#d3c6b1',inner:'#ebe2d3',chev:'#cbbca5'};
+  const ui={panel:'rgba(255,251,244,.95)',line:'#e2d9c8',text:INK,muted:'#857c93',sel:'#fff',selLine:INK,bar:'#d9a35f',barBg:'#efe7da',note:'#c98a4b',noteBg:'#fff8ec',noteText:'#7a5225'};
+  c.fillStyle='#f7f2e8'; c.fillRect(0,0,CW,CH); grid(c,'rgba(120,100,70,.10)');
+  blobs(c,[[2,4],[3,4],[3,5],[2,5],[3,3],[4,5],[2,6],[3,6]],COL.r,.24);
+  blobs(c,[[2,12],[3,12],[3,13],[2,13],[3,14],[4,13],[2,14]],COL.b,.24);
+  blobs(c,[[26,12],[27,12],[27,13],[26,13],[28,13],[27,14],[26,14]],COL.y,.24);
+  blobs(c,[[27,4],[28,4],[28,5],[27,5]],COL.b,.22);
+  const rnd=mulberry32(5);
+  for(const [cells,col] of [[[[2,4],[3,4],[3,5],[2,5],[3,3],[4,5],[2,6],[3,6]],COL.r],[[[2,12],[3,12],[3,13],[2,13],[3,14],[4,13],[2,14]],COL.b],[[[26,12],[27,12],[27,13],[26,13],[28,13],[27,14],[26,14]],COL.y],[[[27,4],[28,4],[28,5],[27,5]],COL.b]])
+    for(const [x,y] of cells) for(let j=0;j<3;j++){ const px=x*T+8+rnd()*24, py=y*T+8+rnd()*24, r=2+rnd()*2.5, a=rnd()*3; c.globalAlpha=.55; c.fillStyle=col; c.beginPath(); c.moveTo(px+Math.cos(a)*r*1.6,py+Math.sin(a)*r*1.6); c.lineTo(px+Math.cos(a+1.57)*r,py+Math.sin(a+1.57)*r); c.lineTo(px-Math.cos(a)*r*1.6,py-Math.sin(a)*r*1.6); c.lineTo(px-Math.cos(a+1.57)*r,py-Math.sin(a+1.57)*r); c.fill(); }
+  c.globalAlpha=1;
+  // lignes de production
+  const L1=track(c,[[4,5],[9,5],[9,4.5]],st); const L1b=track(c,[[9,4],[14,4],[14,7]],st);
+  const L2=track(c,[[4,13],[11,13],[11,12.5]],st); const L2b=track(c,[[11,12],[10,12],[10,9],[14,9],[14,8.5]],st);
+  const L3=track(c,[[15,8],[18,8]],st);
+  const L4=track(c,[[26,13],[25,13]],st); const L4b=track(c,[[24,13],[24,10],[21,10],[21,8.5]],st);
+  const L5=track(c,[[26,5],[23,5]],st);
+  // pièces
+  const IS=T*.42, ST=T*.8;
+  along(L1,ST,12,(x,y)=>drawGlass(c,'rrrr',x,y,IS),[2,6]);
+  along(L1b,ST,34,(x,y)=>drawGlass(c,'rr--',x,y,IS),[3,7]);
+  along(L2,ST,20,(x,y)=>drawGlass(c,'bbbb',x,y,IS),[1,5]);
+  along(L2b,ST,34,(x,y)=>drawGlass(c,'--bb',x,y,IS),[2,6,9]);
+  along(L3,ST,14,(x,y)=>drawGlass(c,'rrbb',x,y,IS),[2]);
+  along(L4b,ST,34,(x,y)=>drawGlass(c,'y--y',x,y,IS),[2,6]);
+  along(L5,ST,10,(x,y)=>drawGlass(c,'bbbb',x,y,IS),[1]);
+  // machines (mêmes règles que la maquette jouable)
+  mA(c,'extractor',3,5,1,'r'); mA(c,'cutter',9,4,0); mA(c,'trash',8,4,0);
+  mA(c,'extractor',3,13,1,'b'); mA(c,'cutter',11,12,0); mA(c,'trash',12,12,0);
+  mA(c,'assembler',14,8,1); mA(c,'extractor',27,13,3,'y'); mA(c,'cutter',24,13,3); mA(c,'trash',24,14,0); mA(c,'extractor',27,5,3,'b');
+  // rosace (4x4)
+  const hx=19*T, hy=5*T, hs=4*T;
+  c.save(); c.shadowColor='rgba(242,196,109,.55)'; c.shadowBlur=30; rr(c,hx+4,hy+4,hs-8,hs-8,22); c.fillStyle='#eee5d4'; c.fill(); c.restore();
+  rr(c,hx+4,hy+4,hs-8,hs-8,22); c.lineWidth=2.5; c.strokeStyle=INK; c.stroke();
+  const meds=['rrrr','yy--','rrbb','vvvv','ovvo','rbrb','rybg','gy--','vvbb','o-o-','gggg','rvrv','yyyy','b--b','gogo','vyvy','rr-r','bgbg','oooo'];
+  rosace(c,hx+hs/2,hy+hs/2,hs*.43,meds,[1,1,.7],2);
+  // HUD
+  panel(c,14,14,250,64,ui); text(c,'Rosace',30,46,'800 22px system-ui,sans-serif',INK); text(c,'atelier de vitrail',30,66,'13px system-ui,sans-serif','#857c93');
+  panel(c,380,14,440,92,ui);
+  rr(c,396,28,62,62,12); c.fillStyle='#2f2a3b'; c.fill(); drawGlass(c,'rrbb',427,59,36);
+  text(c,'MÉDAILLON 3 / 7 · PREMIER ANNEAU',474,38,'600 10.5px system-ui,sans-serif','#857c93');
+  text(c,'Le sertissage',474,58,'800 17px system-ui,sans-serif',INK);
+  bar(c,474,68,326,.7,ui); text(c,'14 / 20 livrées',474,94,'600 12px system-ui,sans-serif',INK); text(c,'1,0 / s',800,94,'600 12px system-ui,sans-serif',INK,'right');
+  const icons=[
+    {name:'Convoyeur',icon:c=>{ c.fillStyle='#ebe2d3'; c.strokeStyle='#d3c6b1'; c.lineWidth=3; rr(c,-8,-16,16,32,3); c.fill(); c.stroke(); drawGlass(c,'rrbb',0,0,12); }},
+    {name:'Extracteur',icon:c=>machineA(c,'extractor',34,'r')},
+    {name:'Découpeuse',icon:c=>machineA(c,'cutter',34)},
+    {name:'Pivot',icon:c=>machineA(c,'rotator',34)},
+    {name:'Sertisseuse',icon:c=>machineA(c,'assembler',34)},
+    {name:'Répartiteur',icon:c=>machineA(c,'splitter',34)},
+    {name:'Recycleur',icon:c=>machineA(c,'trash',34)},
+  ];
+  toolbar(c,ui,icons,4);
+  callout(c,P(14)+18,P(8)-14,640,250,['La Sertisseuse assemble les moitiés ;','superposés, deux verres mélangent leurs teintes'],ui);
+  callout(c,hx+hs/2+40,hy+hs-10,1010,470,['Chaque médaillon livré','s\'illumine dans la rosace'],ui);
+}
+
+/* ============ B · Pépinière ============ */
+const FL={rose:'#f07fa4',jaune:'#f7c948',bleu:'#6c9cf0',blanc:'#fbf7ef'};
+function plant(c,x,y,s,g,col,fern){
+  // pot
+  c.fillStyle='#c9774e'; c.beginPath(); c.moveTo(x-s*.3,y+s*.04); c.lineTo(x+s*.3,y+s*.04); c.lineTo(x+s*.22,y+s*.42); c.lineTo(x-s*.22,y+s*.42); c.closePath(); c.fill();
+  c.strokeStyle='#7c4630'; c.lineWidth=1.2; c.stroke();
+  c.fillStyle='#b5653f'; rr(c,x-s*.34,y-s*.02,s*.68,s*.1,2); c.fill(); c.stroke();
+  if(g<.2){ c.fillStyle='#6b4a2f'; c.beginPath(); c.ellipse(x,y-s*.05,s*.07,s*.05,0,0,7); c.fill(); return; }
+  const top=y-s*.04-(s*.12+g*s*.3);
+  c.strokeStyle='#3f8f4f'; c.lineWidth=Math.max(1.4,s*.06); c.lineCap='round';
+  if(fern&&g>=.6){ for(const a of [-.9,-.4,0,.4,.9]){ c.beginPath(); c.moveTo(x,y-s*.04); c.quadraticCurveTo(x+Math.sin(a)*s*.2,top+s*.05,x+Math.sin(a)*s*.42,top+Math.abs(a)*s*.12); c.stroke(); } return; }
+  c.beginPath(); c.moveTo(x,y-s*.04); c.lineTo(x,top); c.stroke();
+  c.fillStyle='#57b26a';
+  const lv=s*(.1+g*.08); c.beginPath(); c.ellipse(x-lv*.9,top+s*.12,lv,lv*.45,-.5,0,7); c.fill(); c.beginPath(); c.ellipse(x+lv*.9,top+s*.16,lv,lv*.45,.5,0,7); c.fill();
+  if(g>=.75){ const pr=s*.09+(g-.75)*s*.12; c.fillStyle=col; for(let i=0;i<5;i++){ const a=i*1.2566-1.57; c.beginPath(); c.arc(x+Math.cos(a)*pr,top+Math.sin(a)*pr,pr*.75,0,7); c.fill(); } c.fillStyle='#f7c948'; c.beginPath(); c.arc(x,top,pr*.55,0,7); c.fill(); }
+  else if(g>=.5){ c.fillStyle=col; c.beginPath(); c.ellipse(x,top-s*.02,s*.06,s*.09,0,0,7); c.fill(); }
+}
+function tree(c,x,y,r){ c.fillStyle='rgba(60,90,50,.18)'; c.beginPath(); c.ellipse(x+6,y+r*.8,r*1.05,r*.45,0,0,7); c.fill(); c.fillStyle='#7fb06a'; c.beginPath(); c.arc(x,y,r,0,7); c.fill(); c.fillStyle='#93c27c'; c.beginPath(); c.arc(x-r*.3,y-r*.3,r*.55,0,7); c.fill(); }
+function boxB(c,x,y,w,h,fill){ rr(c,x*T+4,y*T+4,w*T-8,h*T-8,10); c.fillStyle=fill; c.fill(); c.lineWidth=2; c.strokeStyle='#4a3f35'; c.stroke(); }
+function sceneB(){
+  const c=setup('cB'), st={outer:'#cdb48c',inner:'#e8d7b8',chev:'#bfa077'};
+  const ui={panel:'rgba(253,251,243,.95)',line:'#dfe3cc',text:'#3d4a36',muted:'#7c8a6f',sel:'#fff',selLine:'#3d4a36',bar:'#7fb06a',barBg:'#e7eedb',note:'#5f9a52',noteBg:'#f6fbef',noteText:'#355a2c'};
+  c.fillStyle='#eef3e1'; c.fillRect(0,0,CW,CH); grid(c,'rgba(70,100,50,.08)');
+  const rnd=mulberry32(9);
+  c.strokeStyle='rgba(90,140,70,.35)'; c.lineWidth=1.4; for(let i=0;i<160;i++){ const x=rnd()*CW,y=rnd()*CH; c.beginPath(); c.moveTo(x-3,y); c.lineTo(x,y-5); c.lineTo(x+3,y); c.stroke(); }
+  // soleil
+  const g=c.createRadialGradient(P(13),P(8),10,P(13),P(8),190); g.addColorStop(0,'rgba(255,224,120,.42)'); g.addColorStop(1,'rgba(255,224,120,0)'); c.fillStyle=g; c.fillRect(0,0,CW,CH);
+  // terre
+  blobs(c,[[2,4],[3,4],[2,5],[3,5],[4,4],[2,3]],'#a0714a',.35,.8); blobs(c,[[2,12],[3,12],[2,13],[3,13],[4,13]],'#a0714a',.35,.8);
+  // étang
+  c.fillStyle='#9cc7e0'; c.beginPath(); c.ellipse(P(26),P(3.4),110,52,-.1,0,7); c.fill(); c.fillStyle='#b9dbe9'; c.beginPath(); c.ellipse(P(25.5),P(3),70,26,-.1,0,7); c.fill();
+  c.fillStyle='#69a765'; for(const [x,y] of [[1000,120],[1080,150],[960,160]]){ c.beginPath(); c.arc(x,y,9,.4,6.0); c.lineTo(x,y); c.fill(); }
+  for(const [x,y,r] of [[40,610,40],[110,650,30],[1160,560,46],[1100,640,34],[730,200,26],[772,226,20],[30,300,28]]) tree(c,x,y,r);
+  // convoyeurs en bois
+  const L1=track(c,[[5,4],[12,4],[12,8],[15,8]],st);
+  const L2=track(c,[[5,13],[9,13],[9,10],[15,10]],st);
+  const L3=track(c,[[19,9],[22,9]],st);
+  // plantes qui poussent le long du trajet
+  const s1=sample(L1,T*.75,10); s1.forEach((p,i)=>{ if(i%5!==3) plant(c,p.x,p.y-4,T*.62,Math.min(1,i/(s1.length-1)),FL.rose,false); });
+  const s2=sample(L2,T*.75,18); s2.forEach((p,i)=>{ if(i%4!==2) plant(c,p.x,p.y-4,T*.62,Math.min(1,i/(s2.length-1)),'#5fa86a',true); });
+  // bouquets
+  sample(L3,T*.8,10).forEach(p=>{ c.fillStyle='#f3e3c3'; c.beginPath(); c.moveTo(p.x-9,p.y-2); c.lineTo(p.x+9,p.y-2); c.lineTo(p.x,p.y+14); c.closePath(); c.fill(); c.strokeStyle='#a58a5b'; c.lineWidth=1.2; c.stroke();
+    for(const [dx,dy,col] of [[-6,-8,FL.rose],[5,-9,FL.rose],[0,-14,FL.jaune]]){ c.fillStyle=col; c.beginPath(); c.arc(p.x+dx,p.y+dy,5,0,7); c.fill(); } c.fillStyle='#57b26a'; c.beginPath(); c.ellipse(p.x+9,p.y-5,6,3,.6,0,7); c.fill(); });
+  // semoirs
+  for(const [x,y] of [[4,4],[4,13]]){ boxB(c,x,y,1,1,'#f6ead2'); c.fillStyle='#d8b98a'; c.beginPath(); c.ellipse(P(x),P(y)+3,10,11,0,0,7); c.fill(); c.strokeStyle='#4a3f35'; c.lineWidth=1.5; c.stroke(); c.fillStyle='#6b4a2f'; for(const [dx,dy] of [[-3,0],[3,2],[0,6]]){ c.beginPath(); c.arc(P(x)+dx,P(y)+dy,1.8,0,7); c.fill(); } }
+  // arrosoir (arche au-dessus du convoyeur)
+  const ax=P(8), ay=P(4); c.strokeStyle='#5b8fc7'; c.lineWidth=4; c.beginPath(); c.moveTo(ax-18,ay+18); c.lineTo(ax-18,ay-20); c.quadraticCurveTo(ax,ay-30,ax+18,ay-20); c.lineTo(ax+18,ay+18); c.stroke();
+  c.fillStyle='#7fb3e6'; for(let i=0;i<6;i++){ c.beginPath(); c.ellipse(ax-12+i*5,ay-12+(i%3)*6,1.6,3,0,0,7); c.fill(); }
+  // serre 2x2
+  const sx=15*T+4, sy=7*T+4, sw=2*T-8, sh=4*T-8;
+  rr(c,sx,sy,sw,sh,10); c.fillStyle='rgba(190,225,235,.55)'; c.fill(); c.strokeStyle='#ffffff'; c.lineWidth=3; c.stroke(); c.strokeStyle='#4a3f35'; c.lineWidth=2; rr(c,sx,sy,sw,sh,10); c.stroke();
+  c.strokeStyle='rgba(255,255,255,.9)'; c.lineWidth=2; for(let i=1;i<3;i++){ c.beginPath(); c.moveTo(sx+i*sw/3,sy); c.lineTo(sx+i*sw/3,sy+sh); c.stroke(); } c.beginPath(); c.moveTo(sx,sy+sh/2); c.lineTo(sx+sw,sy+sh/2); c.stroke();
+  plant(c,sx+22,sy+40,T*.6,.85,FL.rose,false); plant(c,sx+52,sy+120,T*.6,.9,'#5fa86a',true);
+  // bouquetière
+  boxB(c,17,8,2,2,'#fbeff3'); c.strokeStyle='#d0607f'; c.lineWidth=3.5; c.beginPath(); c.moveTo(P(17.5)-14,P(8.5)+8); c.quadraticCurveTo(P(17.5),P(8.5)-12,P(17.5)+14,P(8.5)+8); c.stroke(); c.fillStyle='#d0607f'; c.beginPath(); c.arc(P(17.5),P(8.5)+2,5,0,7); c.fill();
+  text(c,'Bouquetière',P(17.5),P(9.5)+12,'700 11px system-ui,sans-serif','#4a3f35','center');
+  // kiosque 3x3
+  const kx=23*T, ky=7*T, ks=3*T;
+  rr(c,kx+4,ky+30,ks-8,ks-34,10); c.fillStyle='#f4e6cf'; c.fill(); c.strokeStyle='#4a3f35'; c.lineWidth=2; c.stroke();
+  for(let i=0;i<6;i++){ c.fillStyle=i%2?'#fbf7ef':'#e98aa6'; c.beginPath(); const x0=kx+4+i*(ks-8)/6; c.moveTo(x0,ky+10); c.lineTo(x0+(ks-8)/6,ky+10); c.lineTo(x0+(ks-8)/6,ky+34); c.arc(x0+(ks-8)/12,ky+34,(ks-8)/12,0,Math.PI); c.closePath(); c.fill(); }
+  c.strokeStyle='#4a3f35'; c.lineWidth=2; rr(c,kx+4,ky+8,ks-8,28,6); c.stroke();
+  for(const [dx,col] of [[30,FL.rose],[60,FL.jaune],[90,FL.bleu]]){ c.fillStyle='#b98a55'; rr(c,kx+dx-14,ky+82,28,22,5); c.fill(); for(let j=0;j<4;j++){ c.fillStyle=col; c.beginPath(); c.arc(kx+dx-9+j*6,ky+80-(j%2)*4,5,0,7); c.fill(); } }
+  text(c,'Kiosque',kx+ks/2,ky+ks+14,'700 12px system-ui,sans-serif','#4a3f35','center');
+  // HUD
+  panel(c,14,14,262,64,ui); text(c,'Pépinière',30,46,'800 22px system-ui,sans-serif','#3d4a36'); text(c,'l\'usine qui pousse',30,66,'13px system-ui,sans-serif','#7c8a6f');
+  panel(c,380,14,440,92,ui);
+  text(c,'COMMANDE DU KIOSQUE',398,38,'600 10.5px system-ui,sans-serif','#7c8a6f'); text(c,'Bouquet du matin',398,58,'800 17px system-ui,sans-serif','#3d4a36');
+  text(c,'2 roses + 1 fougère',590,58,'600 12px system-ui,sans-serif','#7c8a6f');
+  plant(c,724,50,30,1,FL.rose,false); plant(c,754,50,30,1,FL.rose,false); plant(c,786,50,30,1,'#5fa86a',true);
+  bar(c,398,70,402,.66,ui); text(c,'8 / 12 bouquets',398,96,'600 12px system-ui,sans-serif','#3d4a36');
+  panel(c,CW-224,14,210,64,ui); c.fillStyle='#f7c948'; c.beginPath(); c.arc(CW-196,46,11,0,7); c.fill(); c.strokeStyle='#f7c948'; c.lineWidth=2.4; for(let i=0;i<8;i++){ const a=i*Math.PI/4; c.beginPath(); c.moveTo(CW-196+Math.cos(a)*15,46+Math.sin(a)*15); c.lineTo(CW-196+Math.cos(a)*20,46+Math.sin(a)*20); c.stroke(); }
+  text(c,'Printemps · jour 12',CW-172,42,'800 14px system-ui,sans-serif','#3d4a36'); text(c,'pousse ×1,2 · temps doux',CW-172,61,'12px system-ui,sans-serif','#7c8a6f');
+  const icons=[
+    {name:'Semoir',icon:c=>{ c.fillStyle='#d8b98a'; c.beginPath(); c.ellipse(0,2,11,12,0,0,7); c.fill(); c.strokeStyle='#4a3f35'; c.lineWidth=1.5; c.stroke(); }},
+    {name:'Convoyeur',icon:c=>{ c.fillStyle='#e8d7b8'; c.strokeStyle='#cdb48c'; c.lineWidth=3; rr(c,-8,-16,16,32,3); c.fill(); c.stroke(); }},
+    {name:'Arrosoir',icon:c=>{ c.strokeStyle='#5b8fc7'; c.lineWidth=3; c.beginPath(); c.moveTo(-12,12); c.lineTo(-12,-8); c.quadraticCurveTo(0,-16,12,-8); c.lineTo(12,12); c.stroke(); }},
+    {name:'Serre',icon:c=>{ rr(c,-13,-14,26,28,5); c.fillStyle='rgba(190,225,235,.8)'; c.fill(); c.strokeStyle='#4a3f35'; c.lineWidth=1.5; c.stroke(); c.beginPath(); c.moveTo(0,-14); c.lineTo(0,14); c.moveTo(-13,0); c.lineTo(13,0); c.strokeStyle='#fff'; c.stroke(); }},
+    {name:'Greffoir',icon:c=>{ c.strokeStyle='#3f8f4f'; c.lineWidth=3; c.beginPath(); c.moveTo(-10,12); c.lineTo(0,0); c.lineTo(10,12); c.moveTo(0,0); c.lineTo(0,-12); c.stroke(); c.fillStyle=FL.rose; c.beginPath(); c.arc(0,-13,5,0,7); c.fill(); }},
+    {name:'Bouquetière',icon:c=>{ c.strokeStyle='#d0607f'; c.lineWidth=3; c.beginPath(); c.moveTo(-12,6); c.quadraticCurveTo(0,-12,12,6); c.stroke(); c.fillStyle='#d0607f'; c.beginPath(); c.arc(0,0,4,0,7); c.fill(); }},
+    {name:'Compost',icon:c=>{ c.fillStyle='#8a6a4a'; rr(c,-12,-8,24,20,5); c.fill(); c.fillStyle='#5f9a52'; c.beginPath(); c.arc(-4,-8,4,0,7); c.arc(5,-9,3,0,7); c.fill(); }},
+  ];
+  toolbar(c,ui,icons,1);
+  callout(c,P(12),P(6),560,478,['Les plantes poussent pendant le trajet :','la longueur du convoyeur règle leur maturité'],ui);
+  callout(c,P(8)+20,P(4)-22,420,150,['L\'arrosoir accélère la pousse'],ui);
+}
+
+/* ============ C · Carillon ============ */
+const NOTE={do:'#ff6b6b',re:'#ffa94d',mi:'#ffe066',fa:'#8ce99a',sol:'#66d9e8',la:'#748ffc',si:'#da77f2'};
+function gem(c,x,y,s,col){
+  c.save(); c.shadowColor=col; c.shadowBlur=10;
+  c.beginPath(); for(let i=0;i<6;i++){ const a=i*Math.PI/3+Math.PI/6; c.lineTo(x+Math.cos(a)*s*.5,y+Math.sin(a)*s*.5); } c.closePath(); c.fillStyle=col; c.fill(); c.restore();
+  c.beginPath(); for(let i=0;i<6;i++){ const a=i*Math.PI/3+Math.PI/6; c.lineTo(x+Math.cos(a)*s*.5,y+Math.sin(a)*s*.5); } c.closePath(); c.strokeStyle='rgba(255,255,255,.75)'; c.lineWidth=1.2; c.stroke();
+  c.fillStyle='rgba(255,255,255,.55)'; c.beginPath(); c.moveTo(x-s*.18,y-s*.28); c.lineTo(x+s*.05,y-s*.28); c.lineTo(x-s*.1,y-s*.05); c.closePath(); c.fill();
+}
+function chord(c,x,y,s,cols){ gem(c,x-s*.22,y+s*.14,s*.5,cols[0]); gem(c,x+s*.22,y+s*.14,s*.5,cols[1]); gem(c,x,y-s*.22,s*.5,cols[2]); }
+function boxC(c,x,y,w,h){ c.save(); c.shadowColor='rgba(140,150,255,.35)'; c.shadowBlur=12; rr(c,x*T+4,y*T+4,w*T-8,h*T-8,10); c.fillStyle='#2c3163'; c.fill(); c.restore(); rr(c,x*T+4,y*T+4,w*T-8,h*T-8,10); c.strokeStyle='#a9b0ff'; c.lineWidth=1.8; c.stroke(); }
+function noteHead(c,x,y,col){ c.save(); c.translate(x,y); c.rotate(-.35); c.fillStyle=col; c.beginPath(); c.ellipse(0,0,6.5,4.6,0,0,7); c.fill(); c.restore(); c.strokeStyle=col; c.lineWidth=1.6; c.beginPath(); c.moveTo(x+6,y-1); c.lineTo(x+6,y-24); c.stroke(); }
+function sceneC(){
+  const c=setup('cC'), st={outer:'#2a2f5e',inner:'#353b73',chev:'#8d95ec',glow:'rgba(120,130,255,.35)'};
+  const ui={panel:'rgba(34,38,78,.92)',line:'#4a5096',text:'#ecebff',muted:'#a3a7d6',sel:'#3a4185',selLine:'#a9b0ff',bar:'#ffd166',barBg:'#3a3f7a',note:'#ffd166',noteBg:'rgba(40,44,90,.95)',noteText:'#ffe7a8',shadow:'rgba(0,0,0,.35)'};
+  const bgG=c.createLinearGradient(0,0,0,CH); bgG.addColorStop(0,'#1b1e3d'); bgG.addColorStop(1,'#272b58'); c.fillStyle=bgG; c.fillRect(0,0,CW,CH);
+  grid(c,'rgba(255,255,255,.035)');
+  const rnd=mulberry32(3); for(let i=0;i<140;i++){ c.fillStyle=`rgba(255,255,255,${.15+rnd()*.5})`; c.beginPath(); c.arc(rnd()*CW,rnd()*CH,rnd()*1.4+.3,0,7); c.fill(); }
+  // veines de cristal
+  blobs(c,[[2,4],[3,4],[2,5],[3,5],[3,3]],NOTE.do,.28); blobs(c,[[2,9],[3,9],[2,10],[3,10]],NOTE.mi,.28); blobs(c,[[2,14],[3,14],[2,13],[3,13]],NOTE.sol,.28);
+  blobs(c,[[27,14],[28,14],[27,13]],NOTE.la,.25);
+  // convoyeurs lumineux
+  const L1=track(c,[[4,4],[10,4],[10,8],[12,8]],st);
+  const L2=track(c,[[4,9],[8,9]],st); const L2b=track(c,[[10,9],[12,9]],st);
+  const L3=track(c,[[4,14],[10,14],[10,10],[12,10]],st);
+  const L4=track(c,[[14,9],[20,9]],st);
+  along(L1,T*.75,8,(x,y)=>gem(c,x,y,T*.42,NOTE.do),[3,8]);
+  along(L2,T*.75,4,(x,y)=>gem(c,x,y,T*.42,NOTE.mi),[2]);
+  along(L2b,T*.75,4,(x,y)=>gem(c,x,y,T*.42,NOTE.fa));
+  along(L3,T*.75,14,(x,y)=>gem(c,x,y,T*.42,NOTE.sol),[2,7]);
+  along(L4,T*.9,12,(x,y)=>chord(c,x,y,T*.62,[NOTE.do,NOTE.sol,NOTE.mi]),[3]);
+  // ondes de pulsation (rythme)
+  c.strokeStyle='rgba(255,209,102,.6)'; c.lineWidth=2; for(const [x,y] of [[P(7),P(4)],[P(16),P(9)]]){ for(const r of [10,17]){ c.beginPath(); c.arc(x,y,r,-.9,.9); c.stroke(); } }
+  // résonateurs
+  for(const [x,y,col] of [[3,4,NOTE.do],[3,9,NOTE.mi],[3,14,NOTE.sol]]){ boxC(c,x,y,1,1); c.strokeStyle=col; c.lineWidth=2; for(const r of [5,9,13]){ c.beginPath(); c.arc(P(x),P(y),r,0,7); c.stroke(); } }
+  // accordeur (diapason)
+  boxC(c,9,9,1,1); c.strokeStyle='#e8e9ff'; c.lineWidth=3; c.beginPath(); c.moveTo(P(9)-6,P(9)-12); c.lineTo(P(9)-6,P(9)+2); c.quadraticCurveTo(P(9),P(9)+8,P(9)+6,P(9)+2); c.lineTo(P(9)+6,P(9)-12); c.moveTo(P(9),P(9)+6); c.lineTo(P(9),P(9)+14); c.stroke();
+  text(c,'+1',P(9)+12,P(9)-8,'800 11px system-ui,sans-serif','#ffd166');
+  // harmoniseur 2x3
+  boxC(c,12,8,2,3); for(const [dx,dy,col] of [[-12,8,NOTE.do],[12,8,NOTE.mi],[0,-12,NOTE.sol]]){ c.fillStyle=col; c.beginPath(); c.arc(P(12.5)+dx,P(9)+dy,7,0,7); c.fill(); }
+  c.strokeStyle='#e8e9ff'; c.lineWidth=1.5; c.beginPath(); c.moveTo(P(12.5)-12,P(9)+8); c.lineTo(P(12.5)+12,P(9)+8); c.lineTo(P(12.5),P(9)-12); c.closePath(); c.stroke();
+  text(c,'Harmoniseur',P(12.5),P(10)+36,'700 11px system-ui,sans-serif','#ecebff','center');
+  // grand carillon 4x5
+  const gx=21*T, gy=5*T, gw=4*T, gh=6*T;
+  c.save(); c.shadowColor='rgba(255,209,102,.45)'; c.shadowBlur=30; rr(c,gx+4,gy+4,gw-8,gh-8,16); c.fillStyle='#2f3570'; c.fill(); c.restore();
+  rr(c,gx+4,gy+4,gw-8,gh-8,16); c.strokeStyle='#a9b0ff'; c.lineWidth=2; c.stroke();
+  c.beginPath(); c.moveTo(gx+24,gy+gh-16); c.lineTo(gx+24,gy+70); c.arc(gx+gw/2,gy+70,gw/2-24,Math.PI,0); c.lineTo(gx+gw-24,gy+gh-16); c.strokeStyle='#cfd3ff'; c.lineWidth=3; c.stroke();
+  for(const [bx,by,bs,col] of [[gx+gw/2,gy+82,30,'#ffd166'],[gx+gw/2-34,gy+150,22,'#ffb84d'],[gx+gw/2+34,gy+150,22,'#ffe08a'],[gx+gw/2,gy+190,18,'#ffc56b']]){
+    c.save(); c.shadowColor=col; c.shadowBlur=16; c.fillStyle=col; c.beginPath(); c.moveTo(bx-bs*.35,by-bs*.5); c.quadraticCurveTo(bx,by-bs*.75,bx+bs*.35,by-bs*.5); c.lineTo(bx+bs*.6,by+bs*.45); c.lineTo(bx-bs*.6,by+bs*.45); c.closePath(); c.fill(); c.restore();
+    c.fillStyle='#7a5a1a'; c.beginPath(); c.arc(bx,by+bs*.55,bs*.1,0,7); c.fill(); }
+  text(c,'Grand carillon',gx+gw/2,gy+gh+16,'700 12px system-ui,sans-serif','#ecebff','center');
+  // visualiseur
+  for(let i=0;i<22;i++){ const h=8+Math.abs(Math.sin(i*.8)*Math.cos(i*.33))*44; c.fillStyle=`rgba(255,209,102,${.35+.4*(h/52)})`; rr(c,gx-6+i*8,gy+gh+30-h/2+20,5,h,2); c.fill(); }
+  // HUD
+  panel(c,14,14,250,64,ui); text(c,'Carillon',30,46,'800 22px system-ui,sans-serif','#ecebff'); text(c,'l\'usine qui compose',30,66,'13px system-ui,sans-serif','#a3a7d6');
+  panel(c,360,14,480,100,ui);
+  text(c,'PARTITION N°4 · « BERCEUSE »',378,36,'600 10.5px system-ui,sans-serif','#a3a7d6');
+  c.strokeStyle='rgba(236,235,255,.45)'; c.lineWidth=1; for(let i=0;i<5;i++){ c.beginPath(); c.moveTo(378,50+i*8); c.lineTo(820,50+i*8); c.stroke(); }
+  const seq=[['do',0],['mi',2],['sol',4],['mi',2],['do',0],['fa',3],['la',5],['fa',3],['sol',4],['si',6],['re',1],['sol',4]];
+  seq.forEach(([n,h],i)=>{ const x=398+i*35, y=86-h*4; c.globalAlpha=i<5?1:.45; noteHead(c,x,y,NOTE[n]); c.globalAlpha=1; });
+  c.strokeStyle='#ffd166'; c.lineWidth=2; c.beginPath(); c.moveTo(398+4.5*35,44); c.lineTo(398+4.5*35,92); c.stroke();
+  bar(c,378,98,442,.42,ui);
+  panel(c,CW-214,14,200,64,ui); noteHead(c,CW-192,58,'#ecebff'); text(c,'= 96',CW-176,52,'800 18px system-ui,sans-serif','#ecebff'); text(c,'mesure 3 / 8 · juste',CW-176,70,'12px system-ui,sans-serif','#a3a7d6');
+  const icons=[
+    {name:'Résonateur',icon:c=>{ c.strokeStyle=NOTE.do; c.lineWidth=2; for(const r of [4,8,12]){ c.beginPath(); c.arc(0,0,r,0,7); c.stroke(); } }},
+    {name:'Convoyeur',icon:c=>{ c.fillStyle='#353b73'; c.strokeStyle='#8d95ec'; c.lineWidth=2; rr(c,-8,-16,16,32,3); c.fill(); c.stroke(); }},
+    {name:'Accordeur',icon:c=>{ c.strokeStyle='#e8e9ff'; c.lineWidth=2.6; c.beginPath(); c.moveTo(-6,-12); c.lineTo(-6,2); c.quadraticCurveTo(0,8,6,2); c.lineTo(6,-12); c.moveTo(0,6); c.lineTo(0,14); c.stroke(); }},
+    {name:'Octavieur',icon:c=>{ gem(c,-6,4,12,NOTE.la); gem(c,6,-6,12,NOTE.la); }},
+    {name:'Harmoniseur',icon:c=>chord(c,0,0,26,[NOTE.do,NOTE.mi,NOTE.sol])},
+    {name:'Séquenceur',icon:c=>{ for(let i=0;i<4;i++){ rr(c,-15+i*8,-6,6,12,2); c.fillStyle=[NOTE.do,NOTE.mi,NOTE.sol,NOTE.mi][i]; c.fill(); } }},
+    {name:'Métronome',icon:c=>{ c.fillStyle='#cfd3ff'; c.beginPath(); c.moveTo(-9,12); c.lineTo(9,12); c.lineTo(4,-12); c.lineTo(-4,-12); c.closePath(); c.fill(); c.strokeStyle='#ffd166'; c.lineWidth=2; c.beginPath(); c.moveTo(0,8); c.lineTo(7,-10); c.stroke(); }},
+  ];
+  toolbar(c,ui,icons,4);
+  callout(c,gx+gw-14,gy+gh-20,960,560,['Chaque livraison joue sa note :','l\'usine compose la bande-son'],ui);
+  callout(c,P(7)+14,P(4),330,170,['La cadence des convoyeurs','suit le tempo'],ui);
+}
+sceneA(); sceneB(); sceneC();
+</script>
+</body>
+</html>
