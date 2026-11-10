@@ -6,7 +6,9 @@ Jeu de construction d'usine détendu : on produit des pièces de vitrail pour il
 
 ## Jouer
 
-Prérequis : Node.js 22.
+**En ligne :** https://vin100zz.github.io/shapez/ (les maquettes de l'étude sont dans https://vin100zz.github.io/shapez/maquettes/propositions.html). Le site est republié automatiquement à chaque envoi sur la branche principale.
+
+**En local**, avec Node.js 22 :
 
 ```bash
 npm install
