@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>Rosace</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%232f2a3b'/%3E%3Cpath d='M9 9h14v14H9z' fill='%23e0566b'/%3E%3Cpath d='M9 9l7 7 7-7z' fill='%23f4b942'/%3E%3Cpath d='M9 23l7-7 7 7z' fill='%233f72d9'/%3E%3C/svg%3E">
+</head>
+<body>
+<canvas id="game" aria-label="Atelier de vitrail : vue de l'usine"></canvas>
+<div id="hud">
+  <div id="brand" class="panel">
+    <h1>Rosace<span>prototype vertical</span></h1>
+    <div class="row">
+      <button id="bUndo" title="Annuler (Ctrl+Z)">Annuler</button>
+      <button id="bRedo" title="Rétablir (Ctrl+Y)">Rétablir</button>
+      <button id="bPause" title="Pause (P)">Pause</button>
+      <button id="bSpeed" title="Vitesse de simulation">Vitesse ×1</button>
+      <button id="bSound" title="Carillon à chaque livraison">Son : non</button>
+      <button id="bMenu" title="Sauvegardes et options">Menu</button>
+      <button id="bHelp" title="Règles et commandes">Aide</button>
+    </div>
+  </div>
+  <div id="order" class="panel">
+    <canvas id="ordIcon" width="120" height="120"></canvas>
+    <div class="body">
+      <div class="t" id="ordT"></div>
+      <div class="n" id="ordN"></div>
+      <div class="d" id="ordD"></div>
+      <div class="bar"><i id="ordBar"></i></div>
+      <div class="p"><span id="ordP"></span><span id="ordR"></span></div>
+      <div class="h" id="ordH"></div>
+    </div>
+  </div>
+  <div id="rosace" class="panel"><canvas id="rosCv" width="352" height="352"></canvas><div class="c" id="rosC"></div></div>
+  <div id="info" class="panel"></div>
+  <div id="tools" class="panel" role="toolbar" aria-label="Outils"></div>
+  <div id="toast" class="panel" role="status"></div>
+  <div id="tip" class="panel"></div>
+  <div id="stats"></div>
+</div>
+
+<div id="help" class="modal" role="dialog" aria-modal="true" aria-labelledby="helpTitle">
+  <div class="panel">
+    <h2 id="helpTitle">Rosace : comment jouer</h2>
+    <p>Aucune défaite, aucun chronomètre, des gisements infinis. Sertissez les médaillons de la rosace à votre rythme ; chaque médaillon débloque une nouveauté.</p>
+    <h3>La pièce de verre</h3>
+    <p>Un carré partagé par ses deux diagonales en <b>quatre triangles</b> (haut, droite, bas, gauche), chacun teinté ou vide.</p>
+    <h3>Les machines</h3>
+    <ul>
+      <li><b>Extracteur</b> : sur un gisement de sable coloré, produit une vitre pleine.</li>
+      <li><b>Convoyeur</b> : transporte les pièces ; entrées par l'arrière et les côtés.</li>
+      <li><b>Découpeuse</b> : la moitié <i>avant + droite</i> sort à droite, la moitié <i>arrière + gauche</i> à gauche. Une sortie non raccordée est recyclée.</li>
+      <li><b>Pivot</b> : un quart de tour horaire.</li>
+      <li><b>Sertisseuse</b> : assemble les pièces venues de gauche et de droite ; deux verres superposés <b>mélangent leurs teintes</b>.</li>
+      <li><b>Répartiteur</b> : distribue vers l'avant, la gauche et la droite. <b>Recycleur</b> : refond tout.</li>
+    </ul>
+    <h3>Mélanges</h3>
+    <div class="mix">
+      <span><i class="sw" style="background:#e0566b"></i>+<i class="sw" style="background:#f4b942"></i>=<i class="sw" style="background:#f08a3c"></i> corail</span>
+      <span><i class="sw" style="background:#f4b942"></i>+<i class="sw" style="background:#3f72d9"></i>=<i class="sw" style="background:#38a878"></i> émeraude</span>
+      <span><i class="sw" style="background:#e0566b"></i>+<i class="sw" style="background:#3f72d9"></i>=<i class="sw" style="background:#8d5bd1"></i> améthyste</span>
+      <span>autres = <i class="sw" style="background:#6b7280"></i> grisaille</span>
+    </div>
+    <h3>Commandes</h3>
+    <ul>
+      <li><b>Clic</b> construire, <b>glisser</b> tracer des convoyeurs (ils tournent tout seuls), <b>R</b> / <b>Maj+R</b> pivoter.</li>
+      <li><b>Clic droit</b> ou <b>X</b> effacer, <b>Ctrl+Z</b> annuler, <b>Ctrl+Y</b> rétablir.</li>
+      <li><b>Molette</b> ou <b>pincer</b> zoom ; <b>clic milieu</b>, <b>Espace+glisser</b>, <b>flèches</b> ou outil Observer (<b>Q</b>) pour se déplacer ; <b>C</b> recentrer sur la rosace.</li>
+      <li><b>1 à 7</b> outils, <b>H</b> mode contemplation, <b>P</b> pause, <b>F3</b> statistiques.</li>
+    </ul>
+    <p class="muted">La partie est sauvegardée automatiquement dans ce navigateur. Le menu permet de l'exporter.</p>
+    <div class="row end"><button id="helpClose">Fermer</button></div>
+  </div>
+</div>
+
+<div id="menu" class="modal" role="dialog" aria-modal="true" aria-labelledby="menuTitle">
+  <div class="panel">
+    <h2 id="menuTitle">Menu</h2>
+    <p class="muted" id="saveInfo"></p>
+    <div class="grid">
+      <button id="mSave">Sauvegarder maintenant</button>
+      <button id="mExport">Exporter dans un fichier</button>
+      <label class="btn" for="mImport">Importer un fichier</label>
+      <input type="file" id="mImport" accept=".json,application/json" hidden>
+      <button id="mCopy">Copier le code de la partie</button>
+      <button id="mNew">Nouvelle partie</button>
+      <button id="mDemo">Charger l'usine de démonstration</button>
+    </div>
+    <label class="check"><input type="checkbox" id="mSandbox"> Bac à sable : tous les outils disponibles</label>
+    <label for="mCode" class="muted">Code de partie (à coller ici pour le charger)</label>
+    <textarea id="mCode" rows="3" spellcheck="false"></textarea>
+    <div class="row end"><button id="mLoadCode">Charger ce code</button><button id="mClose">Fermer</button></div>
+  </div>
+</div>
+
+<div id="confirm" class="modal" role="alertdialog" aria-modal="true" aria-labelledby="confirmText">
+  <div class="panel">
+    <p id="confirmText"></p>
+    <div class="row end"><button id="confirmNo">Annuler</button><button id="confirmYes" class="on">Confirmer</button></div>
+  </div>
+</div>
+<script type="module" src="/src/main.ts"></script>
+</body>
+</html>

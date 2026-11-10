@@ -131,17 +131,19 @@ On extrait des cristaux sonores, on les accorde, on les harmonise. **Chaque livr
 - **Pivot** : un quart de tour dans le sens horaire. **Sertisseuse** : elle assemble deux pièces, et les triangles qui se recouvrent mélangent leurs teintes.
 - **Choix « détente »** : une sortie de Découpeuse non raccordée est recyclée automatiquement. On évite ainsi le blocage frustrant de l'usine.
 
-### Progression (premier anneau, tel que codé dans la maquette)
+### Progression (premier anneau, tel que codé dans le prototype vertical)
+
+On commence avec l'Extracteur et le Convoyeur. Chaque médaillon débloque la suite.
 
 | # | Médaillon | Pièce demandée | Notion apprise | Débloque |
 |---|---|---|---|---|
-| 1 | Premier verre | vitre pleine rubis | extraire, acheminer | Découpeuse |
-| 2 | La découpe | demi-vitre ambre | découper | Sertisseuse |
-| 3 | Le sertissage | rubis en haut-droite, cobalt en bas-gauche | assembler | Superposition |
-| 4 | La superposition | vitre améthyste | mélanger | Pivot |
-| 5 | Crépuscule | corail et améthyste sur l'autre diagonale | orienter les coupes | Répartiteur |
-| 6 | Le moulin | triangles alternés | double découpe | Cœur de la rosace |
-| 7 | La lumière | quatre couleurs | synthèse | Second anneau |
+| 1 | Premier verre | 8 vitres pleines rubis | extraire, acheminer | Découpeuse et Recycleur |
+| 2 | La découpe | 10 demi-vitres ambre | découper | Sertisseuse |
+| 3 | Le sertissage | 20 pièces rubis en haut-droite, cobalt en bas-gauche | assembler | Pivot |
+| 4 | La superposition | 12 vitres améthyste | mélanger | Répartiteur |
+| 5 | Crépuscule | 14 pièces corail et améthyste sur l'autre diagonale | orienter les coupes | Convoyeurs 50 % plus rapides |
+| 6 | Le moulin | 16 pièces à triangles alternés | double découpe | Machines 50 % plus rapides |
+| 7 | La lumière | 20 pièces à quatre couleurs | synthèse | Second anneau |
 
 Le **second anneau** propose 12 commandes générées automatiquement. Elles poussent à construire des lignes de production réutilisables.
 
@@ -196,7 +198,7 @@ Ces estimations supposent un développeur expérimenté à temps plein. Ce sont 
 | Phase | Durée | Contenu | Critère de sortie |
 |---|---|---|---|
 | 0 · Maquette | Faite | Boucle de jeu, 6 machines, 19 commandes | Le concept se comprend en 2 minutes |
-| 1 · Prototype vertical | 4 à 6 semaines | Noyau de simulation testé (chemins de convoyeurs), carte infinie par blocs, sauvegarde, annulation, déblocages | 5 à 10 testeurs jouent 1 h sans aide et en redemandent |
+| 1 · Prototype vertical | 4 à 6 semaines (socle livré, voir `docs/prototype-vertical.md`) | Noyau de simulation testé (chemins de convoyeurs), carte infinie par blocs, sauvegarde, annulation, déblocages | 5 à 10 testeurs jouent 1 h sans aide et en redemandent |
 | 2 · Alpha | 2 à 3 mois | Ponts, plans réutilisables, premier chapitre complet, audio, accessibilité, options | Session de 3 à 4 h fluide, 60 images/s avec une grande usine |
 | 3 · Démo publique | Environ 1 mois | Démo web (itch.io) et page Steam, captures, bande-annonce | Taux de liste de souhaits et retours |
 | 4 · Version 1.0 | 6 à 9 mois | 3 ou 4 verrières, bac à sable, défis, finitions, localisation | Sortie |

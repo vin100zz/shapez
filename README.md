@@ -1,20 +1,68 @@
-# Usine détendue : étude et maquettes
+# Rosace
 
-Étude de faisabilité et propositions pour un jeu de construction d'usine **détendu**, dans l'esprit de Shapez mais avec une identité propre.
+Jeu de construction d'usine détendu : on produit des pièces de vitrail pour illuminer, médaillon après médaillon, une immense rosace. Ce dépôt contient l'étude de conception, les maquettes et le **prototype vertical** jouable.
 
-| Contenu | Fichier |
+![Prototype vertical de Rosace](docs/captures/prototype-vertical.png)
+
+## Jouer
+
+Prérequis : Node.js 22.
+
+```bash
+npm install
+```
+
+```bash
+npm run dev
+```
+
+Ouvrez ensuite l'adresse affichée (par défaut http://localhost:5173). La partie est sauvegardée automatiquement dans le navigateur.
+
+`npm run build` produit dans `dist/` une version statique, à publier telle quelle (itch.io, GitHub Pages, n'importe quel serveur web).
+
+## Commandes
+
+| Action | Commande |
 |---|---|
-| Analyse, propositions, feuille de route | [`docs/analyse-et-propositions.md`](docs/analyse-et-propositions.md) |
-| Planches des trois propositions (A · Rosace, B · Pépinière, C · Carillon) | [`maquettes/propositions.html`](maquettes/propositions.html) |
-| **Maquette jouable** du concept recommandé, *Rosace* | [`maquettes/rosace-prototype.html`](maquettes/rosace-prototype.html) |
-| Captures d'écran | [`maquettes/captures/`](maquettes/captures/) |
+| Construire | clic ; glisser avec le convoyeur trace un chemin qui tourne tout seul |
+| Pivoter l'orientation | R (Maj+R dans l'autre sens) |
+| Effacer | clic droit, ou outil Gomme (X) |
+| Annuler / rétablir | Ctrl+Z / Ctrl+Y |
+| Se déplacer | clic milieu, Espace+glisser, flèches du clavier, outil Observer (Q) |
+| Zoomer | molette ou pincement |
+| Outils | 1 à 7 |
+| Recentrer sur la rosace | C |
+| Mode contemplation, pause, statistiques | H, P, F3 |
 
-## Lancer la maquette
+## Ce que contient le prototype
 
-Ouvrez `maquettes/rosace-prototype.html` dans un navigateur récent. Il n'y a ni dépendance, ni compilation, ni serveur.
+- **Machines :** Extracteur, Convoyeur, Découpeuse, Pivot, Sertisseuse (qui mélange les teintes superposées), Répartiteur, Recycleur.
+- **Progression :** 7 médaillons scénarisés qui débloquent outils et améliorations, puis 12 médaillons générés, puis des commandes libres.
+- **Carte infinie**, avec des gisements générés à partir d'une graine. Des couleurs secondaires apparaissent loin de la rosace.
+- **Confort :** annulation illimitée, sauvegarde automatique, export et import, pause, vitesse ×1/×2/×4, carillon, mode contemplation, bac à sable, usine de démonstration (menu).
 
-- **Clic** : construire. **Glisser** avec le convoyeur trace un chemin qui tourne tout seul.
-- **R** : pivoter. **Clic droit** : effacer. **Molette** : zoom. **Clic milieu** ou **Espace** : déplacer la vue.
-- **1–7** : outils. **H** : mode contemplation. **P** : pause. Le bouton **Aide** détaille les règles.
+## Développement
 
-![Maquette jouable](maquettes/captures/maquette-jouable.png)
+| Commande | Rôle |
+|---|---|
+| `npm run dev` | serveur de développement |
+| `npm test` | tests (pièces, convoyeurs, machines, progression, annulation, sauvegarde, déterminisme) |
+| `npm run typecheck` | vérification TypeScript |
+| `npm run bench` | banc de performance de la simulation |
+| `npm run build` | version de production dans `dist/` |
+
+```
+src/core/     simulation pure, sans navigateur, testée
+src/render/   rendu Canvas 2D
+src/ui/       interface, entrées, sauvegardes locales
+tests/        tests Vitest
+bench/        banc de performance
+docs/         étude et notes techniques
+maquettes/    maquettes de l'étude
+```
+
+## Documents
+
+- [Étude : analyse et propositions](docs/analyse-et-propositions.md)
+- [Prototype vertical : notes techniques, mesures, limites](docs/prototype-vertical.md)
+- Maquettes : [planches des trois propositions](maquettes/propositions.html) et [première maquette jouable](maquettes/rosace-prototype.html)

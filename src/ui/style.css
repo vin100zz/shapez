@@ -1,0 +1,80 @@
+:root {
+  --ink: #3b3547; --muted: #857c93; --panel: rgba(255, 251, 244, .95); --line: #e2d9c8; --accent: #c98a4b; --accent2: #f2c46d;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; overflow: hidden; background: #f6f1e7; color: var(--ink);
+  font: 14px/1.35 ui-rounded, "SF Pro Rounded", "Nunito", "Segoe UI", system-ui, sans-serif; -webkit-user-select: none; user-select: none; }
+#game { position: fixed; inset: 0; width: 100%; height: 100%; touch-action: none; display: block; }
+#hud { position: fixed; inset: 0; pointer-events: none; }
+.panel { background: var(--panel); border: 1.5px solid var(--line); border-radius: 14px; box-shadow: 0 6px 24px rgba(59, 53, 71, .10); }
+#hud .panel, #hud button { pointer-events: auto; }
+#brand { position: absolute; left: 14px; top: 14px; padding: 10px 12px; width: 300px; }
+#brand h1 { margin: 0 0 8px; font-size: 21px; letter-spacing: .4px; }
+#brand h1 span { color: var(--accent); font-weight: 600; font-size: 12.5px; margin-left: 8px; }
+.row { display: flex; gap: 5px; flex-wrap: wrap; }
+.row.end { justify-content: flex-end; margin-top: 12px; }
+button, .btn { font: inherit; font-size: 12px; border: 1.5px solid var(--line); background: #fff; color: var(--ink); border-radius: 9px; padding: 4px 9px; cursor: pointer; text-align: center; }
+button:hover, .btn:hover { border-color: var(--accent); }
+button:disabled { opacity: .45; cursor: default; border-color: var(--line); }
+button.on { background: var(--ink); color: #fff; border-color: var(--ink); }
+button:focus-visible, .btn:focus-visible, textarea:focus-visible, input:focus-visible { outline: 3px solid var(--accent2); outline-offset: 1px; }
+#order { position: absolute; left: 50%; top: 14px; transform: translateX(-50%); display: flex; gap: 14px; align-items: center; padding: 10px 16px; width: 440px; }
+#order canvas { width: 60px; height: 60px; flex: none; }
+#order .body { flex: 1; min-width: 0; }
+#order .t { font-size: 10.5px; color: var(--muted); text-transform: uppercase; letter-spacing: .9px; }
+#order .n { font-size: 17px; font-weight: 700; }
+#order .d { font-size: 12px; opacity: .85; }
+#order .bar { height: 8px; background: #efe7da; border-radius: 6px; overflow: hidden; margin: 6px 0 3px; }
+#order .bar i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--accent2), var(--accent)); transition: width .25s; }
+#order .p { display: flex; justify-content: space-between; font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums; }
+#order .h { font-size: 11.5px; color: var(--muted); margin-top: 3px; }
+#rosace { position: absolute; right: 14px; top: 14px; padding: 10px 10px 8px; text-align: center; }
+#rosace canvas { width: 176px; height: 176px; display: block; }
+#rosace .c { font-size: 11.5px; color: var(--muted); margin-top: 4px; }
+#tools { position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%); display: flex; gap: 3px; padding: 6px; max-width: calc(100% - 16px); overflow-x: auto; }
+.tool { width: 64px; height: 68px; flex: none; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 10px; border: 1.5px solid transparent; background: transparent; padding: 2px; position: relative; }
+.tool canvas { width: 38px; height: 38px; }
+.tool .l { font-size: 10.5px; margin-top: 2px; white-space: nowrap; }
+.tool .k { position: absolute; top: 3px; left: 6px; font-size: 9.5px; color: var(--muted); }
+.tool.sel { background: #fff; border-color: var(--ink); }
+.tool.locked canvas { opacity: .3; filter: grayscale(1); }
+.tool.locked .l { color: var(--muted); }
+.tool .lock { position: absolute; top: 2px; right: 6px; font-size: 9.5px; color: var(--muted); }
+#info { position: absolute; left: 50%; bottom: 98px; transform: translateX(-50%); padding: 7px 14px; font-size: 12.5px; width: max-content; max-width: min(620px, calc(100% - 28px)); text-align: center; }
+#toast { position: absolute; left: 50%; top: 176px; transform: translate(-50%, -8px); padding: 10px 18px; font-size: 15px; font-weight: 700; opacity: 0; transition: opacity .4s, transform .4s; max-width: calc(100% - 28px); text-align: center; }
+#toast.show { opacity: 1; transform: translate(-50%, 0); }
+#tip { position: absolute; padding: 4px 9px; font-size: 11.5px; display: none; border-radius: 8px; max-width: 280px; }
+#stats { position: absolute; right: 14px; bottom: 14px; font: 11px ui-monospace, monospace; color: var(--muted); display: none; white-space: pre; text-align: right; }
+.modal { position: fixed; inset: 0; background: rgba(59, 53, 71, .35); display: none; align-items: center; justify-content: center; padding: 16px; z-index: 10; }
+.modal.show { display: flex; }
+.modal .panel { max-width: 640px; width: 100%; padding: 18px 24px; max-height: 88vh; overflow: auto; font-size: 13.5px; -webkit-user-select: text; user-select: text; }
+.modal h2 { margin: 0 0 6px; font-size: 19px; }
+.modal h3 { margin: 14px 0 4px; font-size: 14px; color: var(--accent); }
+.modal ul { margin: 4px 0; padding-left: 18px; }
+.modal .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 10px 0; }
+.modal .grid button, .modal .grid .btn { padding: 8px 10px; font-size: 13px; }
+.modal textarea { width: 100%; font: 11px ui-monospace, monospace; border: 1.5px solid var(--line); border-radius: 8px; padding: 6px; margin-top: 4px; resize: vertical; }
+.modal .check { display: flex; gap: 8px; align-items: center; margin: 4px 0 12px; }
+.muted { color: var(--muted); }
+.mix { display: flex; gap: 14px; flex-wrap: wrap; margin: 6px 0; }
+.mix span { display: inline-flex; align-items: center; gap: 4px; }
+i.sw { display: inline-block; width: 14px; height: 14px; border-radius: 3px; border: 1.5px solid var(--ink); }
+body.zen #hud > *:not(#toast) { display: none; }
+@media (max-width: 1150px) {
+  #order { left: 14px; top: auto; bottom: 96px; transform: none; width: min(440px, calc(100% - 28px)); }
+  #toast { top: 150px; }
+  #info { display: none; }
+}
+@media (max-width: 640px) {
+  #brand { width: auto; max-width: calc(100% - 150px); padding: 8px 10px; }
+  #rosace canvas { width: 104px; height: 104px; }
+  #rosace .c { display: none; }
+  #order canvas { width: 44px; height: 44px; }
+  #order .h, #order .d { display: none; }
+  .tool { width: 54px; }
+  .modal .grid { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #toast, #order .bar i { transition: none; }
+}
